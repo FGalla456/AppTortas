@@ -1,0 +1,24 @@
+FALTAN PARA LA APP DE TORTAS
+
+En SQL
+
+- Restar stock de mercaderia despues de la venta
+- Calcular Nuevo Precio unitario y total despues de la venta
+- Procedimientos Almacenados de Modificar
+- Eliminar Stock al Cambiar el estado de una Compra
+- Calcular Nuevo Precio unitario y total despues de cambiar el estado de una Compra
+
+En Visual
+
+- Cargar Detalle despues de compra
+- Cargar Ingredientes despues de Torta
+- Cargar Tortas despues de Pedido
+
+- Agregar los Forms de "Actualizar" en la presentacion de todas las clases
+- Agregar las funciones de "Actualizar" en el dao de todas las clases
+
+
+Posibles Mejoras
+
+-Agregar una variable mas a Tortas por pedidos para ver si la torta se produjo
+-Pasar Base de Datos a MySQL

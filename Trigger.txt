@@ -1,0 +1,14 @@
+create trigger SumarStock
+on Detalle_x_Compra
+after insert
+as
+begin
+SET NOCOUNT ON;
+declare @cant float,@pu money,@CodM int
+select @cant = Cantidad,@pu = Precio_x_Unidad , @CodM = Id_Mercaderia from inserted
+update Mercaderia
+set Stock = Stock + @cant 
+set Precio = Precio + @cant * @pu
+set Precio_Unitario = Precio / Stock
+where IdMercaderia = @CodM
+end

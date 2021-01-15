@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D8DE197-06C2-46A7-8395-9DFFF64C0956}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsFormsApp1</RootNamespace>
+    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clientes\Actualizar_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Actualizar_Cliente.Designer.cs">
+      <DependentUpon>Actualizar_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Agregar_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\Agregar_Cliente.Designer.cs">
+      <DependentUpon>Agregar_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\EliminarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\EliminarCliente.Designer.cs">
+      <DependentUpon>EliminarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\VerClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\VerClientes.Designer.cs">
+      <DependentUpon>VerClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Eliminar_Compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Eliminar_Compra.Designer.cs">
+      <DependentUpon>Eliminar_Compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Eliminar_Detalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Eliminar_Detalle.Designer.cs">
+      <DependentUpon>Eliminar_Detalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mercaderia\Agregar_Mercaderia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mercaderia\Agregar_Mercaderia.Designer.cs">
+      <DependentUpon>Agregar_Mercaderia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mercaderia\Eliminar_Mercaderia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mercaderia\Eliminar_Mercaderia.Designer.cs">
+      <DependentUpon>Eliminar_Mercaderia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mercaderia\Ver_Mercaderia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mercaderia\Ver_Mercaderia.Designer.cs">
+      <DependentUpon>Ver_Mercaderia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Carteles\SeleccionarEliminacionCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Carteles\SeleccionarEliminacionCompra.Designer.cs">
+      <DependentUpon>SeleccionarEliminacionCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Carteles\SeleccionarEliminacionPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Carteles\SeleccionarEliminacionPedido.Designer.cs">
+      <DependentUpon>SeleccionarEliminacionPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\Agregar_Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\Agregar_Pedido.Designer.cs">
+      <DependentUpon>Agregar_Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\Agregar_TortasPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\Agregar_TortasPedido.Designer.cs">
+      <DependentUpon>Agregar_TortasPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Agregar_Compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Agregar_Compra.Designer.cs">
+      <DependentUpon>Agregar_Compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Agregar_DetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Agregar_DetalleCompra.Designer.cs">
+      <DependentUpon>Agregar_DetalleCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\Ver_Compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\Ver_Compras.Designer.cs">
+      <DependentUpon>Ver_Compras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\Eliminar_Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\Eliminar_Pedido.Designer.cs">
+      <DependentUpon>Eliminar_Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\Eliminar_TortasPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\Eliminar_TortasPedido.Designer.cs">
+      <DependentUpon>Eliminar_TortasPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedidos\Ver_Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedidos\Ver_Pedidos.Designer.cs">
+      <DependentUpon>Ver_Pedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Carteles\SeleccionarEliminacionDeTorta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Carteles\SeleccionarEliminacionDeTorta.Designer.cs">
+      <DependentUpon>SeleccionarEliminacionDeTorta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tortas\Agregar_Ingredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tortas\Agregar_Ingredientes.Designer.cs">
+      <DependentUpon>Agregar_Ingredientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tortas\Agregar_Torta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tortas\Agregar_Torta.Designer.cs">
+      <DependentUpon>Agregar_Torta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tortas\Eliminar_Ingrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tortas\Eliminar_Ingrediente.Designer.cs">
+      <DependentUpon>Eliminar_Ingrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tortas\Eliminar_Torta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tortas\Eliminar_Torta.Designer.cs">
+      <DependentUpon>Eliminar_Torta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tortas\Ver_Tortas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tortas\Ver_Tortas.Designer.cs">
+      <DependentUpon>Ver_Tortas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Agregar_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Agregar_Venta.Designer.cs">
+      <DependentUpon>Agregar_Venta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Eliminar_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Eliminar_Venta.Designer.cs">
+      <DependentUpon>Eliminar_Venta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\Ver_Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\Ver_Ventas.Designer.cs">
+      <DependentUpon>Ver_Ventas.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Clientes\Actualizar_Cliente.resx">
+      <DependentUpon>Actualizar_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\Agregar_Cliente.resx">
+      <DependentUpon>Agregar_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\EliminarCliente.resx">
+      <DependentUpon>EliminarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\VerClientes.resx">
+      <DependentUpon>VerClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Eliminar_Compra.resx">
+      <DependentUpon>Eliminar_Compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Eliminar_Detalle.resx">
+      <DependentUpon>Eliminar_Detalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mercaderia\Agregar_Mercaderia.resx">
+      <DependentUpon>Agregar_Mercaderia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mercaderia\Eliminar_Mercaderia.resx">
+      <DependentUpon>Eliminar_Mercaderia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mercaderia\Ver_Mercaderia.resx">
+      <DependentUpon>Ver_Mercaderia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Carteles\SeleccionarEliminacionCompra.resx">
+      <DependentUpon>SeleccionarEliminacionCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Carteles\SeleccionarEliminacionDeTorta.resx">
+      <DependentUpon>SeleccionarEliminacionDeTorta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Carteles\SeleccionarEliminacionPedido.resx">
+      <DependentUpon>SeleccionarEliminacionPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Agregar_Pedido.resx">
+      <DependentUpon>Agregar_Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Agregar_TortasPedido.resx">
+      <DependentUpon>Agregar_TortasPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Agregar_Compra.resx">
+      <DependentUpon>Agregar_Compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Agregar_DetalleCompra.resx">
+      <DependentUpon>Agregar_DetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\Ver_Compras.resx">
+      <DependentUpon>Ver_Compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Eliminar_Pedido.resx">
+      <DependentUpon>Eliminar_Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Eliminar_TortasPedido.resx">
+      <DependentUpon>Eliminar_TortasPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedidos\Ver_Pedidos.resx">
+      <DependentUpon>Ver_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tortas\Agregar_Ingredientes.resx">
+      <DependentUpon>Agregar_Ingredientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tortas\Agregar_Torta.resx">
+      <DependentUpon>Agregar_Torta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tortas\Eliminar_Ingrediente.resx">
+      <DependentUpon>Eliminar_Ingrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tortas\Eliminar_Torta.resx">
+      <DependentUpon>Eliminar_Torta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tortas\Ver_Tortas.resx">
+      <DependentUpon>Ver_Tortas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Agregar_Venta.resx">
+      <DependentUpon>Agregar_Venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Eliminar_Venta.resx">
+      <DependentUpon>Eliminar_Venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\Ver_Ventas.resx">
+      <DependentUpon>Ver_Ventas.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\WindowsFormsApp1.Compras.Agregar_DetalleCompra.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menor-que-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-mayor-o-igual-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-más-de-50-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{6c39f115-f516-4402-9d2a-d785eee8cc63}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{23be0fa5-9ef8-45cf-9590-9af438050b88}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
