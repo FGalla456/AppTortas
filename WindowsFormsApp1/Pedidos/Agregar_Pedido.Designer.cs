@@ -34,8 +34,6 @@
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtTotal = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.txtPed = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtIdCliente = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -54,7 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dtpFecha.Location = new System.Drawing.Point(353, 312);
+            this.dtpFecha.Location = new System.Drawing.Point(358, 215);
             this.dtpFecha.MaxDate = new System.DateTime(2110, 12, 31, 0, 0, 0, 0);
             this.dtpFecha.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.dtpFecha.Name = "dtpFecha";
@@ -116,42 +114,11 @@
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.SystemColors.Control;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(83, 312);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(88, 215);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(210, 29);
             this.bunifuCustomLabel2.TabIndex = 10;
             this.bunifuCustomLabel2.Text = "Fecha de Entrega:";
-            // 
-            // bunifuCustomLabel1
-            // 
-            this.bunifuCustomLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.SystemColors.Control;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(76, 98);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(224, 29);
-            this.bunifuCustomLabel1.TabIndex = 9;
-            this.bunifuCustomLabel1.Text = "Numero de Pedido:";
-            // 
-            // txtPed
-            // 
-            this.txtPed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPed.BackColor = System.Drawing.Color.White;
-            this.txtPed.BorderColor = System.Drawing.Color.Chartreuse;
-            this.txtPed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPed.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtPed.Enabled = false;
-            this.txtPed.Location = new System.Drawing.Point(353, 108);
-            this.txtPed.Name = "txtPed";
-            this.txtPed.Size = new System.Drawing.Size(237, 20);
-            this.txtPed.TabIndex = 8;
-            this.txtPed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoPermitirEscribir);
             // 
             // bunifuCustomLabel4
             // 
@@ -161,7 +128,7 @@
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.SystemColors.Control;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(128, 212);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(128, 108);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(121, 29);
             this.bunifuCustomLabel4.TabIndex = 16;
@@ -177,7 +144,7 @@
             this.txtIdCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdCliente.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtIdCliente.Enabled = false;
-            this.txtIdCliente.Location = new System.Drawing.Point(353, 210);
+            this.txtIdCliente.Location = new System.Drawing.Point(353, 106);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(237, 20);
             this.txtIdCliente.TabIndex = 15;
@@ -191,7 +158,7 @@
             this.bunifuCustomLabel5.AutoSize = true;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.SystemColors.Control;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(128, 409);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(128, 358);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(143, 29);
             this.bunifuCustomLabel5.TabIndex = 18;
@@ -207,7 +174,7 @@
             this.txtCosto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCosto.Cursor = System.Windows.Forms.Cursors.No;
             this.txtCosto.Enabled = false;
-            this.txtCosto.Location = new System.Drawing.Point(353, 413);
+            this.txtCosto.Location = new System.Drawing.Point(353, 362);
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(237, 20);
             this.txtCosto.TabIndex = 17;
@@ -294,7 +261,7 @@
             this.btnClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnClientes.Image")));
             this.btnClientes.ImageActive = null;
-            this.btnClientes.Location = new System.Drawing.Point(596, 205);
+            this.btnClientes.Location = new System.Drawing.Point(596, 101);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(35, 29);
             this.btnClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -318,6 +285,7 @@
             this.GrillaCliente.Size = new System.Drawing.Size(444, 198);
             this.GrillaCliente.TabIndex = 37;
             this.GrillaCliente.Visible = false;
+            this.GrillaCliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaCliente_CellDoubleClick);
             // 
             // Agregar_Pedido
             // 
@@ -338,8 +306,6 @@
             this.Controls.Add(this.bunifuCustomLabel3);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.bunifuCustomLabel2);
-            this.Controls.Add(this.bunifuCustomLabel1);
-            this.Controls.Add(this.txtPed);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Agregar_Pedido";
@@ -359,8 +325,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txtTotal;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private WindowsFormsControlLibrary1.BunifuCustomTextbox txtPed;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox txtIdCliente;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;

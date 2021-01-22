@@ -150,7 +150,6 @@ namespace WindowsFormsApp1.Clientes
             this.Dock = DockStyle.Fill;
             D = 0;
             Numeros = 0;
-            txtCliente.Text = Cli.incremetarCli().ToString();
         }
 
         private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
@@ -298,11 +297,10 @@ namespace WindowsFormsApp1.Clientes
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
-            if (txtApellido.Text !="" && txtCliente.Text != "" && txtDomicilio.Text != "" && txtNombre.Text != "" &&  txtTelefono.Text != "")
+            if (txtApellido.Text !="" && txtDomicilio.Text != "" && txtNombre.Text != "" &&  txtTelefono.Text != "")
             {
                 Entidad.Clientes Cli = new Entidad.Clientes();
                 Cli.setApellido(txtApellido.Text.ToString());
-                Cli.setCliente(int.Parse(txtCliente.Text.ToString()));
                 Cli.setDomicilio(txtDomicilio.Text.ToString());
                 Cli.setEstado(true);
                 Cli.setNombre(txtNombre.Text.ToString());

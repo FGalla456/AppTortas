@@ -10,3 +10,9 @@ C:\Users\franc\Desktop\Tortas\Entidad\obj\Debug\Entidad.csprojAssemblyReference.
 C:\Users\franc\Desktop\Tortas\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
 C:\Users\franc\Desktop\Tortas\Entidad\obj\Debug\Entidad.dll
 C:\Users\franc\Desktop\Tortas\Entidad\obj\Debug\Entidad.pdb
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\bin\Debug\Entidad.dll
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\bin\Debug\Entidad.pdb
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\obj\Debug\Entidad.csprojAssemblyReference.cache
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\obj\Debug\Entidad.dll
+C:\Users\franc\Documents\GitHub\AppTortas\Entidad\obj\Debug\Entidad.pdb

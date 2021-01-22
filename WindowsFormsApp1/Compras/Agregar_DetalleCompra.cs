@@ -143,8 +143,6 @@ namespace WindowsFormsApp1.Compras
             N_DetalleCompra det = new N_DetalleCompra();
             if (var == false)
             {
-
-                NroCompra.Text = (det.incremetarfact().ToString());
                 //    btnfact.Visible = false;
             }
         }

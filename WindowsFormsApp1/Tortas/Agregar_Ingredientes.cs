@@ -119,7 +119,6 @@ namespace WindowsFormsApp1.Tortas
         {
             this.Dock = DockStyle.Fill;
             N_IngredienteTorta IT = new N_IngredienteTorta();
-            txtTorta.Text = IT.incremetarIng().ToString();
             lista.Clear();
             GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // lista.Reset();

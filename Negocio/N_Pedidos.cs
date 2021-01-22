@@ -33,20 +33,13 @@ namespace Negocio
         public void datosPed(Pedidos Ped)
         {
             DaoPedidos Pedi = new DaoPedidos();
-            Pedi.InsertarPedidoEnBD("Pedidos", Ped);
-        }
-
-        public int incremetarPed()
-        {
-            DaoPedidos det = new DaoPedidos();
-            int pep = det.incrementarPed();
-            return pep;
+            Pedi.InsertarPedidos(Ped);
         }
 
         public void eliminarPedido(int codigo)
         {
             DaoPedidos Ped = new DaoPedidos();
-            Ped.eliminarPedSQL(codigo);
+           // Ped.eliminarPedSQL(codigo);
         }
 
     }

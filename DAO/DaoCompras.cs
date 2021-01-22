@@ -30,54 +30,62 @@ namespace DAO
 			return tabla;
 		}
 
-		public void ArmarParametrosCompras(ref SqlCommand Comando, Compras Com)
+		public void InsertarCompra(Compras com)
 		{
-			SqlParameter SqlParametros = new SqlParameter();
-			SqlParametros = Comando.Parameters.Add("@NroCompra", SqlDbType.NVarChar, 50);
-			SqlParametros.Value = Com.getFactura();
-			SqlParametros = Comando.Parameters.Add("@Total", SqlDbType.Money);
-			SqlParametros.Value = Com.getTotal();
-			SqlParametros = Comando.Parameters.Add("@Fecha", SqlDbType.SmallDateTime);
-			SqlParametros.Value = Com.getFecha();
-            SqlParametros = Comando.Parameters.Add("@Estado", SqlDbType.Bit);
-            SqlParametros.Value = Com.getEstado();
-        }
+			string Consulta = "insert into Compras(Total,Fecha,Estado)" +
+				"values(" + com.getTotal() + ",'" + com.getFecha() + "',1)";
 
-		public void InsertarComprasEnBD(String NombreTabla, Compras com)
-		{
-
-			SqlCommand Comando = new SqlCommand();
-			ArmarParametrosCompras(ref Comando, com);
-			AccesoDatos ad = new AccesoDatos();
-			ad.EjecutarProcedimientoAlmacenado(ref Comando, "Cargar_Compra");
+			ds.RealizarConsulta(Consulta);
 		}
 
-		public void eliminarcomSQL(int codigo)
-		{
-				SqlConnection conex = new SqlConnection();
-				conex = ds.ObtenerConexion();
-				SqlCommand Comando = new SqlCommand();
+		/*		public void ArmarParametrosCompras(ref SqlCommand Comando, Compras Com)
+				{
+					SqlParameter SqlParametros = new SqlParameter();
+					SqlParametros = Comando.Parameters.Add("@NroCompra", SqlDbType.NVarChar, 50);
+					SqlParametros.Value = Com.getFactura();
+					SqlParametros = Comando.Parameters.Add("@Total", SqlDbType.Money);
+					SqlParametros.Value = Com.getTotal();
+					SqlParametros = Comando.Parameters.Add("@Fecha", SqlDbType.SmallDateTime);
+					SqlParametros.Value = Com.getFecha();
+					SqlParametros = Comando.Parameters.Add("@Estado", SqlDbType.Bit);
+					SqlParametros.Value = Com.getEstado();
+				}
 
-				SqlParameter SqlParametros = new SqlParameter();
-				SqlParametros = Comando.Parameters.Add("@NroCom", SqlDbType.Int);
-				SqlParametros.Value = codigo;
+				public void InsertarComprasEnBD(String NombreTabla, Compras com)
+				{
 
-				Comando.Connection = conex;
-				Comando.CommandType = CommandType.StoredProcedure;
-				Comando.CommandText = "Baja_Compra";
-				Comando.ExecuteNonQuery();
+					SqlCommand Comando = new SqlCommand();
+					ArmarParametrosCompras(ref Comando, com);
+					AccesoDatos ad = new AccesoDatos();
+					ad.EjecutarProcedimientoAlmacenado(ref Comando, "Cargar_Compra");
+				}
 
-		}
+				public void eliminarcomSQL(int codigo)
+				{
+						SqlConnection conex = new SqlConnection();
+						conex = ds.ObtenerConexion();
+						SqlCommand Comando = new SqlCommand();
 
-		public int incrementarfact()
-		{
-			SqlConnection conex = new SqlConnection();
-			conex = ds.ObtenerConexion();
-			SqlCommand Comando = new SqlCommand();
-			Comando.Connection = conex;
-			Comando.CommandText = "SELECT COUNT(*) FROM Compras";
-			Int32 count = (Int32)Comando.ExecuteScalar();
-			return count + 1;
-		}
+						SqlParameter SqlParametros = new SqlParameter();
+						SqlParametros = Comando.Parameters.Add("@NroCom", SqlDbType.Int);
+						SqlParametros.Value = codigo;
+
+						Comando.Connection = conex;
+						Comando.CommandType = CommandType.StoredProcedure;
+						Comando.CommandText = "Baja_Compra";
+						Comando.ExecuteNonQuery();
+
+				}
+
+				public int incrementarfact()
+				{
+					SqlConnection conex = new SqlConnection();
+					conex = ds.ObtenerConexion();
+					SqlCommand Comando = new SqlCommand();
+					Comando.Connection = conex;
+					Comando.CommandText = "SELECT COUNT(*) FROM Compras";
+					Int32 count = (Int32)Comando.ExecuteScalar();
+					return count + 1;
+				}*/
 	}
 }

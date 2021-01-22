@@ -19,14 +19,14 @@ namespace Negocio
 
 		public void datosCom(Compras com)
 		{
-			DaoCompras Vent = new DaoCompras();
-			Vent.InsertarComprasEnBD("Compras", com);
+			DaoCompras Comp = new DaoCompras();
+			Comp.InsertarCompra(com);
 		}
 
         public void eliminarCompra(int codigo)
         {
             DaoCompras Com = new DaoCompras();
-            Com.eliminarcomSQL(codigo);
+     //       Com.eliminarcomSQL(codigo);
         }
 
         //public bool ExisteCom(string fac)
@@ -36,12 +36,7 @@ namespace Negocio
         //    return categ;
         //}
 
-        public int incremetarfact()
-		{
-			DaoDetalleCompra det = new DaoDetalleCompra();
-			int pep = det.incrementarfact();
-			return pep;
-		}
+
 		
         //public DataTable Reportestabla(string ClausulaSQL)
 		//{

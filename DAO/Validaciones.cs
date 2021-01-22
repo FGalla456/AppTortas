@@ -13,7 +13,7 @@ namespace DAO
     {
         AccesoDatos ds = new AccesoDatos();
 
-        public string existedato(string nombretabla, int datoabuscar, string nombrecolumna)
+   /*     public string existedato(string nombretabla, int datoabuscar, string nombrecolumna)
         {
 
             string var;
@@ -30,6 +30,6 @@ namespace DAO
                 }
             }
             return "Error";
-        }
+        }*/
     }
 }

@@ -21,20 +21,13 @@ namespace Negocio
         public void datosIng(Ingredientes_x_Torta Ing)
         {
             DaoIngredientes Ingr = new DaoIngredientes();
-            Ingr.InsertarIngredienteEnBD("Ingredientes_x_Torta", Ing);
-        }
-
-        public int incremetarIng()
-        {
-            DaoIngredientes det = new DaoIngredientes();
-            int pep = det.incrementarTor();
-            return pep;
+            Ingr.InsertarIngrediente(Ing);
         }
 
         public void eliminarIngrediente(int Torta, int Mer)
         {
             DaoIngredientes IT = new DaoIngredientes();
-            IT.eliminarITSQL(Torta,Mer);
+          //  IT.eliminarITSQL(Torta,Mer);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DAO
         public DataTable getTablaClientes()
         {
             List<Clientes> lista = new List<Clientes>();
-            DataTable tabla = ds.ObtenerTabla("Clientes", "select IdCliente as 'Id Cliente', Nombre, Apellido, Telefono, Domicilio from Cliente where Estado = 1");
+            DataTable tabla = ds.ObtenerTabla("Clientes", "select Nombre, Apellido, Telefono, Domicilio from Cliente where Estado = 1");
             return tabla;
         }
 
@@ -27,6 +27,15 @@ namespace DAO
             return tabla;
         }
 
+        public void InsertarCliente(Clientes cli) 
+        {
+            string Consulta = "insert into Cliente(Nombre,Apellido,Telefono,Domicilio,Estado)" +
+                "values('" + cli.getNombre() + "','" + cli.getApellido() + "','" + cli.getTelefono() + "','" + cli.getDomicilio() + "',1)";
+
+            ds.RealizarConsulta(Consulta);
+        }
+
+        /*
         public void ArmarParametrosClientes(ref SqlCommand Comando, Clientes cli)
         {
             SqlParameter SqlParametros = new SqlParameter();
@@ -70,11 +79,11 @@ namespace DAO
 
         }
 
-     /*   public bool validacionClientes(string CUIT)
+        public bool validacionClientes(string CUIT)
         {
             validacion val = new validacion();
             return (val.existedato("Clientes", CUIT, "CUIT"));
-        }*/
+        }
 
         public void modificar(Clientes cli)
         {
@@ -94,7 +103,7 @@ namespace DAO
             Comando.CommandText = "SELECT COUNT(*) FROM Cliente";
             Int32 count = (Int32)Comando.ExecuteScalar();
             return count + 1;
-        }
+        }*/
 
      }
 }

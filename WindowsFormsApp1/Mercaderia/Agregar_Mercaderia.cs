@@ -22,10 +22,6 @@ namespace WindowsFormsApp1.Mercaderia
         private string ConstruirMensaje()
         {
             string Mensaje = null;
-            if (txtIdProd.Text == "")
-            {
-                Mensaje = "Producto";
-            }
             if (txtNombre.Text == "")
             {
                 if (Mensaje == null)
@@ -58,7 +54,6 @@ namespace WindowsFormsApp1.Mercaderia
             cbUnidad.Items.Add("Kilogramos");
             cbUnidad.Items.Add("Litros");
             N_Mercaderia Mer = new N_Mercaderia();
-            txtIdProd.Text = Mer.incremetarMer().ToString();
         }
 
         private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
@@ -136,11 +131,9 @@ namespace WindowsFormsApp1.Mercaderia
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
-            if (txtIdProd.Text != "" && txtNombre.Text != "" && cbUnidad.Text !="")
+            if (txtNombre.Text != "" && cbUnidad.Text !="")
             {
                 Entidad.Mercaderia Mer = new Entidad.Mercaderia();
-                Mer.setEstado(true);
-                Mer.setIdMer(int.Parse(txtIdProd.Text.ToString()));
                 Mer.setNombre(txtNombre.Text.ToString());
                 Mer.setPrecioT(0);
                 Mer.setPrecioU(0);

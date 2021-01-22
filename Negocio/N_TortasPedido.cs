@@ -15,26 +15,19 @@ namespace Negocio
         public DataTable getTabla()
         {
             DaoTortasPedido dao = new DaoTortasPedido();
-            return dao.getTablaTortaPedido();
+            return dao.getTablaTortasPedido();
         }
 
         public void datosTP(Tortas_x_Pedido TP)
         {
             DaoTortasPedido TOP = new DaoTortasPedido();
-            TOP.InsertarTortaPedidoEnBD("Tortas_x_Pedido", TP);
-        }
-
-        public int incremetarPed()
-        {
-            DaoTortasPedido det = new DaoTortasPedido();
-            int pep = det.incrementarPed();
-            return pep;
+            TOP.InsertarTortasPedido(TP);
         }
 
         public void eliminarTP(int Torta,int Pedido)
         {
             DaoTortasPedido TP = new DaoTortasPedido();
-            TP.eliminarTPSQL(Torta,Pedido);
+           // TP.eliminarTPSQL(Torta,Pedido);
         }
 
     }

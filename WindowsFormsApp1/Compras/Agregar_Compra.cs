@@ -99,7 +99,6 @@ namespace WindowsFormsApp1
             this.Dock = DockStyle.Fill;
             N_Compras Com = new N_Compras();
 			NroCompra.Enabled = false;
-            NroCompra.Text = Com.incremetarfact().ToString();
 			dtpFecha.Text = DateTime.Today.ToString();
 			txtTotal.Enabled = false;
             if (lista.Columns.Contains("Nº Compra") == false)

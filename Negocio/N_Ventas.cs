@@ -20,20 +20,13 @@ namespace Negocio
         public void datosVen(Ventas Ven)
         {
             DaoVentas Vent = new DaoVentas();
-            Vent.InsertarVentaEnBD("Ventas", Ven);
-        }
-
-        public int incremetarVen()
-        {
-            DaoVentas det = new DaoVentas();
-            int pep = det.incrementarVen();
-            return pep;
+            Vent.InsertarVenta(Ven);
         }
 
         public void eliminarVenta(int codigo)
         {
             DaoVentas Ven = new DaoVentas();
-            Ven.eliminarVenSQL(codigo);
+          //  Ven.eliminarVenSQL(codigo);
         }
 
     }

@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
         {
             this.Dock = DockStyle.Fill;
             N_TortasPedido TP = new N_TortasPedido();
-            txtPed.Text = TP.incremetarPed().ToString();
+
             lista.Clear();
             GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // lista.Reset();

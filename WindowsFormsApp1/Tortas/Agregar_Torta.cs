@@ -149,7 +149,6 @@ namespace WindowsFormsApp1.Tortas
         {
             this.Dock = DockStyle.Fill;
             N_Tortas Tor = new N_Tortas();
-            txtTorta.Text = Tor.incremetarTor().ToString();
         }
     }
 }

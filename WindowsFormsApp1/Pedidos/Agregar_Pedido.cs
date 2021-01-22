@@ -22,10 +22,6 @@ namespace WindowsFormsApp1.Pedidos
         private string ConstruirMensaje()
         {
             string Mensaje = null;
-            if (txtPed.Text == "")
-            {
-                Mensaje = "Id Pedido";
-            }
             if (txtIdCliente.Text == "")
             {
                 if (Mensaje == null)
@@ -150,14 +146,13 @@ namespace WindowsFormsApp1.Pedidos
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
-            if (txtPed.Text != "" && txtIdCliente.Text != "" && txtCosto.Text != "" && txtTotal.Text != "" && dtpFecha.Text != "")
+            if ( txtIdCliente.Text != "" && txtCosto.Text != "" && txtTotal.Text != "" && dtpFecha.Text != "")
             { 
             Entidad.Pedidos Ped = new Entidad.Pedidos();
             Ped.setCliente(int.Parse(txtIdCliente.Text.ToString()));
             Ped.setCosto(float.Parse(txtCosto.Text.ToString()));
             Ped.setEstado(true);
             Ped.setFecha(dtpFecha.Text.ToString());
-            Ped.setIdPed(int.Parse(txtPed.Text.ToString()));
             Ped.setPrecioV(float.Parse(txtTotal.Text.ToString()));
             N_Pedidos P = new N_Pedidos();
             P.datosPed(Ped);
@@ -179,7 +174,6 @@ namespace WindowsFormsApp1.Pedidos
         {
             this.Dock = DockStyle.Fill;
             N_Pedidos Ped = new N_Pedidos();
-            txtPed.Text = Ped.incremetarPed().ToString();
             dtpFecha.Text = DateTime.Today.ToString();
         }
 
@@ -202,6 +196,12 @@ namespace WindowsFormsApp1.Pedidos
                     MessageBox.Show("La fecha Ingresada debe ser Posterior o Igual al " + FechaValida.ToShortDateString().ToString());
             }
 
+        }
+
+        private void GrillaCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = GrillaCliente.CurrentRow;
+            txtIdCliente.Text = (row.Cells[0].Value + " " + row.Cells[1].Value);
         }
     }
 

@@ -64,7 +64,6 @@ namespace WindowsFormsApp1.Clientes
             if (txtCliente.Text != "")
             {
                 N_Clientes Cli = new N_Clientes();
-                Cli.eliminarCliente(int.Parse(txtCliente.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }

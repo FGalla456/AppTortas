@@ -13,40 +13,34 @@ namespace Negocio
     {
         public DataTable getTabla()
         {
-            DaoMercaderia dao = new DaoMercaderia();
-            return dao.getTablaMercaderia();
+            DaoProductos dao = new DaoProductos();
+            return dao.getTablaProductos();
         }
 
         public DataTable getTablaMerCom()
         {
-            DaoMercaderia dao = new DaoMercaderia();
-            return dao.getTablaMercaderiaComp();
+            DaoProductos dao = new DaoProductos();
+            return dao.getTablaProductoComp();
         }
 
 
         public void datosMer(Mercaderia Mer)
         {
-            DaoMercaderia Merc = new DaoMercaderia();
-            Merc.InsertarMercEnBD("Mercaderia", Mer);
+            DaoProductos Merc = new DaoProductos();
+            Merc.InsertarProducto(Mer);
         }
 
-        public int incremetarMer()
-        {
-            DaoMercaderia det = new DaoMercaderia();
-            int pep = det.incrementarMer();
-            return pep;
-        }
 
         public void eliminarMercaderia(int codigo)
         {
-            DaoMercaderia Mer = new DaoMercaderia();
-            Mer.eliminarMerSQL(codigo);
+            DaoProductos Mer = new DaoProductos();
+          //  Mer.eliminarMerSQL(codigo);
         }
 
         public string Unidad(int IdMer)
         {
-            DaoMercaderia Mer = new DaoMercaderia();
-            return Mer.validacionMer(IdMer);
+            DaoProductos Mer = new DaoProductos();
+            return "";//Mer.validacionMer(IdMer);
                 
         }
 

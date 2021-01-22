@@ -21,7 +21,7 @@ namespace Negocio
         public void eliminarDetalle(int NroCom, int IdMer)
         {
             DaoDetalleCompra DC = new DaoDetalleCompra();
-            DC.eliminarcomSQL(NroCom, IdMer);
+         //   DC.eliminarcomSQL(NroCom, IdMer);
         }
         
         public void datosDC(DataTable lista)
@@ -29,15 +29,8 @@ namespace Negocio
             DaoDetalleCompra DC = new DaoDetalleCompra();
             for (int i = 0; i < lista.Rows.Count; i++)
             {
-                DC.InsertarDetalleComprasEnBD(lista, i);
+             //   DC.InsertarDetalleCompra();
             }
-        }
-
-        public int incremetarfact()
-        {
-            DaoDetalleCompra det = new DaoDetalleCompra();
-            int pep = det.incrementarfact();
-            return pep;
         }
 
     }

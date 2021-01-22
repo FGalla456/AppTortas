@@ -16,18 +16,26 @@ namespace DAO
         public DataTable getTablaDetalleCompra()
         {
             List<Detalle_x_Compra> lista = new List<Detalle_x_Compra>();
-            DataTable tabla = ds.ObtenerTabla("DetalleCompra", "select Detalle_x_Compra.Id_Mercaderia as 'Id Producto',Nombre,Cantidad," +
-                "Detalle_x_Compra.Precio_x_Unidad as 'Precio Unitario' from Detalle_x_Compra " +
-                "inner join Mercaderia on Mercaderia.IdMercaderia = Detalle_x_Compra.Id_Mercaderia where Detalle_x_Compra.Estado = 1");
+            DataTable tabla = ds.ObtenerTabla("DetalleCompra", "select DetalleCompra.Id_Mercaderia as 'Id Producto',Nombre,Cantidad," +
+                "DetalleCompra.Precio_x_Unidad as 'Precio Unitario' from DetalleCompra " +
+                "inner join Mercaderia on Mercaderia.IdMercaderia = DetalleCompra.Id_Mercaderia where DetalleCompra.Estado = 1");
             return tabla;
         }
         public DataTable getTablaVentasFiltrada(string Consulta)
         {
             List<Detalle_x_Compra> lista = new List<Detalle_x_Compra>();
-            DataTable tabla = ds.ObtenerTabla("Detalle_x_Compra", Consulta);
+            DataTable tabla = ds.ObtenerTabla("DetalleCompra", Consulta);
             return tabla;
         }
+        public void InsertarDetalleCompra(Detalle_x_Compra dc)
+        {
+            string Consulta = "insert into DetalleCompra(idCompra,idProducto,Cantidad,PrecioUnitario,Estado)" +
+                "values(" + dc.getCompra() + "," + dc.getPrecio() + "," + dc.getCantidad() + "," + dc.getPrecio() + ",1)";
 
+            ds.RealizarConsulta(Consulta);
+        }
+
+        /*
        public void ArmarParametrosDetalleCompras(ref SqlCommand Comando, DataTable fila, int i)
        {
                SqlParameter SqlParametros = new SqlParameter();
@@ -93,6 +101,6 @@ namespace DAO
             Int32 count = Convert.ToInt32(Comando.ExecuteScalar());
             return count + 1;
         }
-
+  */
     }
 }

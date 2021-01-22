@@ -21,20 +21,13 @@ namespace Negocio
         public void datosTor(Tortas Tor)
         {
             DaoTortas Tort = new DaoTortas();
-            Tort.InsertarTortaEnBD("Tortas", Tor);
-        }
-
-        public int incremetarTor()
-        {
-            DaoTortas det = new DaoTortas();
-            int pep = det.incrementarTor();
-            return pep;
+            Tort.InsertarTorta(Tor);
         }
 
         public void EliminarTorta(int codigo)
         {
             DaoTortas Tor = new DaoTortas();
-            Tor.eliminarTortaSQL(codigo);
+       //     Tor.eliminarTortaSQL(codigo);
         }
 
     }

@@ -142,7 +142,6 @@ namespace WindowsFormsApp1.Ventas
             txtTotal.Enabled = false;
             txtCosto.Enabled = false;
             N_Ventas Ven = new N_Ventas();
-            txtVenta.Text = Ven.incremetarVen().ToString();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

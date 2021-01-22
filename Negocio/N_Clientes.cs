@@ -20,21 +20,14 @@ namespace Negocio
         public void datosCli(Clientes Cli)
         {
             DaoClientes clien = new DaoClientes();
-            clien.InsertarClientesEnBD("Clientes", Cli);
+            clien.InsertarCliente(Cli);
         }
 
-        public int incremetarCli()
-        {
-            DaoClientes det = new DaoClientes();
-            int pep = det.incrementarCli();
-            return pep;
-        }
-
-        public void eliminarCliente(int codigo)
+   /*     public void eliminarCliente(int codigo)
         {
             DaoClientes Cli = new DaoClientes();
             Cli.eliminarcliSQL(codigo);
-        }
+        }*/
 
     }
 }
