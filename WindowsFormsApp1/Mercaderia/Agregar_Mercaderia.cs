@@ -133,7 +133,7 @@ namespace WindowsFormsApp1.Mercaderia
             string Mensaje;
             if (txtNombre.Text != "" && cbUnidad.Text !="")
             {
-                Entidad.Mercaderia Mer = new Entidad.Mercaderia();
+                Entidad.Producto Mer = new Entidad.Producto();
                 Mer.setNombre(txtNombre.Text.ToString());
                 Mer.setPrecioT(0);
                 Mer.setPrecioU(0);

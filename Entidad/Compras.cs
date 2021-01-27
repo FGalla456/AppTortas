@@ -8,7 +8,7 @@ namespace Entidad
 {
     public class Compras
     {
-		private int Nro_Compra;
+		private int idCompra;
 		private float Total;
 		private string Fecha;
         private bool Estado;
@@ -23,14 +23,14 @@ namespace Entidad
 			Fecha = fec;
 		}
 
-		public int getFactura()
+		public int getCompra()
 		{
-			return Nro_Compra;
+			return idCompra;
 		}
 
-		public void setFactura(int NF)
+		public void setCompra(int Com)
 		{
-			Nro_Compra = NF;
+			idCompra = Com;
 		}
 
 		public float getTotal()

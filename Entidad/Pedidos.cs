@@ -10,9 +10,9 @@ namespace Entidad
     {
         private int Id_Pedido;
         private int Id_Cliente;
-        private string Fecha;
-        private float Precio_Venta;
         private float CostoP;
+        private float Precio_Venta;
+        private string Fecha;
         private bool Estado;
 
         public int getCliente()

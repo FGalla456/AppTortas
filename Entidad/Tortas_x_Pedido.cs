@@ -8,10 +8,10 @@ namespace Entidad
 {
     public class Tortas_x_Pedido
     {
-        private int Id_Pedido;
         private int Id_Torta;
-        private int Cantidad;
+        private int Id_Pedido;
         private float Precio_Venta;
+        private int Cantidad;
         private float Costo;
         private float Total;
         private bool Estado;

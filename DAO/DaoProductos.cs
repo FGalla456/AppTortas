@@ -15,19 +15,19 @@ namespace DAO
 
         public DataTable getTablaProductos()
         {
-            List<Mercaderia> lista = new List<Mercaderia>();
+            List<Producto> lista = new List<Producto>();
             DataTable tabla = ds.ObtenerTabla("Producto", "select idProducto as 'Id Producto',Nombre,Precio as 'Valor Total',Stock,Unidad,PrecioUnitario as 'Precio Unitario' from Producto where Estado = 1");
             return tabla;
         }
 
         public DataTable getTablaProductoComp()
         {
-            List<Mercaderia> lista = new List<Mercaderia>();
+            List<Producto> lista = new List<Producto>();
             DataTable tabla = ds.ObtenerTabla("Producto", "select idProducto as 'Id Producto', Nombre from Producto where Estado = 1");
             return tabla;
         }
 
-        public void InsertarProducto(Mercaderia pro)
+        public void InsertarProducto(Producto pro)
         {
             string Consulta = "insert into Producto(Nombre,Precio,Stock,Unidad,PrecioUnitario,Estado)" +
                 "values('" + pro.getNombre() + "'," + pro.getPrecioT() + "," + pro.getStock() + ",'"+ pro.getUnidad() + "'," + pro.getPrecioU() + ",1)";

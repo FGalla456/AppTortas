@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidad
 {
-    public class Mercaderia
+    public class Producto
     {
-        private int Id_Mercaderia;
+        private int Id_Producto;
         private string Nombre;
-        private float Stock;
-        private float PrecioU;
         private float PrecioT;
+        private float Stock;
         private string Unidad;
+        private float PrecioU;
         bool Estado;
 
         public string getNombre()
@@ -26,14 +26,14 @@ namespace Entidad
             Nombre = Nom;
         }
 
-        public int getIdMer()
+        public int getIdPro()
         {
-            return Id_Mercaderia;
+            return Id_Producto;
         }
 
-        public void setIdMer(int M)
+        public void setIdPro(int P)
         {
-            Id_Mercaderia = M;
+            Id_Producto = P;
         }
 
         public float getStock()

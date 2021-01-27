@@ -9,10 +9,9 @@ namespace Entidad
     public class Ventas
     {
         private int Id_Pedido;
-        private int Nro_Venta;
-        private float Ganancia;
         private float Precio_Venta;
         private float CostoP;
+        private float Ganancia;
         private bool Estado;
 
         public float getGanancia()
@@ -63,16 +62,6 @@ namespace Entidad
         public void setEstado(bool E)
         {
             Estado = E;
-        }
-
-        public int getVenta()
-        {
-            return Nro_Venta;
-        }
-
-        public void setVenta(int M)
-        {
-            Nro_Venta = M;
         }
 
     }

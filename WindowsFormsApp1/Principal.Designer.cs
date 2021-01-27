@@ -465,7 +465,7 @@
             this.PanelCompras.MaximumSize = new System.Drawing.Size(270, 225);
             this.PanelCompras.MinimumSize = new System.Drawing.Size(270, 65);
             this.PanelCompras.Name = "PanelCompras";
-            this.PanelCompras.Size = new System.Drawing.Size(270, 66);
+            this.PanelCompras.Size = new System.Drawing.Size(270, 65);
             this.PanelCompras.TabIndex = 0;
             // 
             // btnVerCompras

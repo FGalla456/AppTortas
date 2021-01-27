@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
         //	fh.Show();
         //}
 
-        ///Fin de los Clicks del panel TOP
+		#region Clicks del panel TOP
 
         private void Salir_Click(object sender, EventArgs e)
 		{
@@ -156,11 +156,11 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		///Fin de los Clicks del panel TOP
+        #endregion
 
-		///Inicio de los Clicks del panel Menu
+        ///Inicio de los Clicks del panel Menu
 
-		private void btnCompras_Click(object sender, EventArgs e)
+        private void btnCompras_Click(object sender, EventArgs e)
 		{
 			ColapzarCompras.Start();
 		}
@@ -396,12 +396,12 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		///Fin de los Timers del panel Menu
+        ///Fin de los Timers del panel Menu
 
 
-		/// Inicio de los Click del Panel Compras
-		
-		private void btnAgregarCompra_Click(object sender, EventArgs e)
+        #region Click del Panel Compras
+
+        private void btnAgregarCompra_Click(object sender, EventArgs e)
 		{
 			AbrirHijo<Compras.Agregar_DetalleCompra>();
 		}
@@ -436,7 +436,7 @@ namespace WindowsFormsApp1
         }
 
 
-        ///Fin de los Click en el Panel de Compras
+        #endregion
 
         ///Inicio de los Click en el Panel de Clientes
 

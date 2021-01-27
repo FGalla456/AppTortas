@@ -8,19 +8,22 @@ namespace Entidad
 {
     public class Detalle_x_Compra
     {
-        private int Nro_Compra;
+        private int idCompra;
         private int Id_Mercaderia;
         private float Cantidad;
         private float PrecioU;
+        private bool Estado;
+
+        public bool Estado1 { get => Estado; set => Estado = value; }
 
         public int getCompra()
         {
-            return Nro_Compra;
+            return idCompra;
         }
 
         public void setCompra(int Com)
         {
-            Nro_Compra = Com;
+            idCompra = Com;
         }
 
         public int getIdMer()

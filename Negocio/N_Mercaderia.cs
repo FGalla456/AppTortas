@@ -24,7 +24,7 @@ namespace Negocio
         }
 
 
-        public void datosMer(Mercaderia Mer)
+        public void datosMer(Producto Mer)
         {
             DaoProductos Merc = new DaoProductos();
             Merc.InsertarProducto(Mer);

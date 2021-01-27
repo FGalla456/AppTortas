@@ -11,8 +11,8 @@ namespace Entidad
         private int Id_Cliente;
         private string Nombre;
         private string Apellido;
-        private string Domicilio;
         private string Telefono;
+        private string Domicilio;
         private bool Estado;
 
         public int getCliente()

@@ -8,8 +8,8 @@ namespace Entidad
 {
      public class Ingredientes_x_Torta
      {
-        private int Id_Mercaderia;
         private int Id_Torta;
+        private int Id_Producto;
         private float Cantidad;
         private float Costo;
         private bool Estado;
@@ -24,14 +24,14 @@ namespace Entidad
             Id_Torta = tor;
         }
 
-        public int getIdMer()
+        public int getIdPro()
         {
-            return Id_Mercaderia;
+            return Id_Producto;
         }
 
-        public void setIdMer(int M)
+        public void setIdPro(int P)
         {
-            Id_Mercaderia = M;
+            Id_Producto = P;
         }
 
         public float getCantidad()
