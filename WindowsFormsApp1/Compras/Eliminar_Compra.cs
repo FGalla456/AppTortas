@@ -13,6 +13,7 @@ namespace WindowsFormsApp1.Compras
 {
     public partial class Eliminar_Compra : Form
     {
+        Genericas gen = new Genericas();
         public Eliminar_Compra()
         {
             InitializeComponent();
@@ -20,29 +21,29 @@ namespace WindowsFormsApp1.Compras
 
         static public string celda;
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_Compra_Load(object sender, EventArgs e)
         {

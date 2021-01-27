@@ -11,23 +11,21 @@ namespace Negocio
 {
     public class N_IngredienteTorta
     {
-
+        DaoIngredientes IT = new DaoIngredientes();
         public DataTable getTabla()
         {
-            DaoIngredientes dao = new DaoIngredientes();
-            return dao.getTablaIngredientes();
+            return IT.getTablaIngredientes();
         }
 
         public void datosIng(Ingredientes_x_Torta Ing)
         {
-            DaoIngredientes Ingr = new DaoIngredientes();
-            Ingr.InsertarIngrediente(Ing);
+            IT.InsertarIngrediente(Ing);
         }
 
         public void eliminarIngrediente(int Torta, int Mer)
         {
-            DaoIngredientes IT = new DaoIngredientes();
-          //  IT.eliminarITSQL(Torta,Mer);
+
+            IT.EliminarIngrediente(Torta,Mer);
         }
     }
 }

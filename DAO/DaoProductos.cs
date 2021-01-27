@@ -35,6 +35,12 @@ namespace DAO
             ds.RealizarConsulta(Consulta);
         }
 
+        public void EliminarProducto(int id)
+        {
+            string Consulta = "UPDATE Producto SET Estado = 0 WHERE idProducto = " + id;
+            ds.RealizarConsulta(Consulta);
+        }
+
         /* public void ArmarParametrosMercaderia (ref SqlCommand Comando, Mercaderia Mer)
          {
              SqlParameter SqlParametros = new SqlParameter();

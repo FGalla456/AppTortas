@@ -38,6 +38,13 @@ namespace DAO
 			ds.RealizarConsulta(Consulta);
 		}
 
+		public void EliminarCompra(int id)
+		{
+			string Consulta = "UPDATE Compra SET Estado = 0 WHERE idCompra = " + id;
+			ds.RealizarConsulta(Consulta);
+		}
+
+
 		/*		public void ArmarParametrosCompras(ref SqlCommand Comando, Compras Com)
 				{
 					SqlParameter SqlParametros = new SqlParameter();

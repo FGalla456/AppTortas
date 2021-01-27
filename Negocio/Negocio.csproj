@@ -45,7 +45,7 @@
     <Compile Include="N_Compras.cs" />
     <Compile Include="N_DetalleCompra.cs" />
     <Compile Include="N_IngredienteTorta.cs" />
-    <Compile Include="N_Mercaderia.cs" />
+    <Compile Include="N_Producto.cs" />
     <Compile Include="N_Pedidos.cs" />
     <Compile Include="N_Tortas.cs" />
     <Compile Include="N_TortasPedido.cs" />

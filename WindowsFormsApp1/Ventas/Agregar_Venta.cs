@@ -14,6 +14,10 @@ namespace WindowsFormsApp1.Ventas
 {
     public partial class Agregar_Venta : Form
     {
+        Entidad.Ventas Ven = new Entidad.Ventas();
+        N_Pedidos np = new N_Pedidos();
+        N_Ventas nv = new N_Ventas();
+        Genericas gen = new Genericas();
         public Agregar_Venta()
         {
             InitializeComponent();
@@ -62,78 +66,35 @@ namespace WindowsFormsApp1.Ventas
             }
             return Mensaje;
         }
+      
+        #region KeyPress
 
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
 
-        private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirLetras(sender, e);
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.NoPermitirEscribir(sender, e);
         }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Agregar_Venta_Load(object sender, EventArgs e)
         {
@@ -141,7 +102,6 @@ namespace WindowsFormsApp1.Ventas
             txtPed.Enabled = false;
             txtTotal.Enabled = false;
             txtCosto.Enabled = false;
-            N_Ventas Ven = new N_Ventas();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -149,15 +109,13 @@ namespace WindowsFormsApp1.Ventas
             string Mensaje;
             if (txtCosto.Text != "" && txtPed.Text != "" && txtTotal.Text != "" && txtVenta.Text != "")
             {
-                Entidad.Ventas Ven = new Entidad.Ventas();
                 Ven.setCosto(float.Parse(txtCosto.Text.ToString()));
                 Ven.setEstado(true);
                 Ven.setIdPed(int.Parse(txtPed.Text.ToString()));
                 Ven.setPrecioV(float.Parse(txtTotal.Text.ToString()));
-                Ven.setVenta(int.Parse(txtVenta.Text.ToString()));
                 Ven.setGanancia(Ven.getPrecioV() - Ven.getCosto());
-                N_Ventas V = new N_Ventas();
-                V.datosVen(Ven);
+
+                nv.datosVen(Ven);
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -176,7 +134,6 @@ namespace WindowsFormsApp1.Ventas
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            N_Pedidos Ped = new N_Pedidos();
             GrillaPed.DefaultCellStyle.ForeColor = Color.White;
             GrillaPed.DefaultCellStyle.BackColor = Color.FromArgb(30, 30, 46);
             GrillaPed.BackgroundColor = Color.FromArgb(30, 30, 46);
@@ -184,7 +141,7 @@ namespace WindowsFormsApp1.Ventas
             GrillaPed.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(180, 48, 49);
             GrillaPed.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             GrillaPed.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(180, 48, 49);
-            GrillaPed.DataSource = Ped.getTablaPedVen();
+            GrillaPed.DataSource = np.getTablaPedVen();
             GrillaPed.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaPed.Visible = true;
         }

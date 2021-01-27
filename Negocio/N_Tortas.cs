@@ -12,22 +12,22 @@ namespace Negocio
     public class N_Tortas
     {
 
+        DaoTortas Tor = new DaoTortas();
         public DataTable getTabla()
         {
-            DaoTortas dao = new DaoTortas();
-            return dao.getTablaTortas();
+            return Tor.getTablaTortas();
         }
 
-        public void datosTor(Tortas Tor)
+        public void datosTor(Tortas tor)
         {
-            DaoTortas Tort = new DaoTortas();
-            Tort.InsertarTorta(Tor);
+
+            Tor.InsertarTorta(tor);
         }
 
         public void EliminarTorta(int codigo)
         {
-            DaoTortas Tor = new DaoTortas();
-       //     Tor.eliminarTortaSQL(codigo);
+
+            Tor.EliminarTorta(codigo);
         }
 
     }

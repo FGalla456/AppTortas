@@ -13,49 +13,54 @@ namespace WindowsFormsApp1.Ventas
 {
     public partial class Eliminar_Venta : Form
     {
+        Genericas gen = new Genericas();
+        N_Ventas nv = new N_Ventas();
         public Eliminar_Venta()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_Venta_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Ventas Ven = new N_Ventas();
-            Grilla.DataSource = Ven.getTabla();
+            Grilla.DataSource = nv.getTabla();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtVenta.Text != "")
             {
-                N_Ventas Ven = new N_Ventas();
-                Ven.eliminarVenta(int.Parse(txtVenta.Text.ToString()));
+                nv.eliminarVenta(int.Parse(txtVenta.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }

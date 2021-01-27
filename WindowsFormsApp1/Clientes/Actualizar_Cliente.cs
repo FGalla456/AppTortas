@@ -13,16 +13,35 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class Actualizar_Cliente : Form
     {
+        Genericas gen = new Genericas();
+        N_Clientes nc = new N_Clientes();
         public Actualizar_Cliente()
         {
             InitializeComponent();
         }
 
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e) 
+        {
+            gen.PermitirNumeros(sender,e);
+        }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender,e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        #endregion
         private void Actualizar_Cliente_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Clientes Cli = new N_Clientes();
-            Grilla.DataSource = Cli.getTabla();
+            Grilla.DataSource = nc.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 

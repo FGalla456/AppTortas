@@ -12,21 +12,19 @@ namespace Negocio
     public class N_DetalleCompra
     {
 
+        DaoDetalleCompra DC = new DaoDetalleCompra();
         public DataTable getTabla()
         {
-            DaoDetalleCompra dao = new DaoDetalleCompra();
-            return dao.getTablaDetalleCompra();
+            return DC.getTablaDetalleCompra();
         }
 
         public void eliminarDetalle(int NroCom, int IdMer)
         {
-            DaoDetalleCompra DC = new DaoDetalleCompra();
-         //   DC.eliminarcomSQL(NroCom, IdMer);
+            DC.EliminarDetalleCompra(NroCom, IdMer);
         }
         
         public void datosDC(DataTable lista)
         {
-            DaoDetalleCompra DC = new DaoDetalleCompra();
             for (int i = 0; i < lista.Rows.Count; i++)
             {
              //   DC.InsertarDetalleCompra();

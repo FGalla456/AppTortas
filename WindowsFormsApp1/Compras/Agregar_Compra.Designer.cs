@@ -55,7 +55,7 @@
             this.NroCompra.Size = new System.Drawing.Size(318, 20);
             this.NroCompra.TabIndex = 0;
             this.NroCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NroCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NroCompra_KeyPress);
+            this.NroCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoPermitirEscribir);
             // 
             // bunifuCustomLabel1
             // 
@@ -110,7 +110,7 @@
             this.txtTotal.Size = new System.Drawing.Size(318, 20);
             this.txtTotal.TabIndex = 4;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotal_KeyPress);
+            this.txtTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoPermitirEscribir);
             // 
             // label1
             // 
@@ -137,7 +137,7 @@
             this.dtpFecha.Size = new System.Drawing.Size(318, 20);
             this.dtpFecha.TabIndex = 7;
             this.dtpFecha.Value = new System.DateTime(2019, 3, 3, 0, 0, 0, 0);
-            this.dtpFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpFecha_KeyPress);
+            this.dtpFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoPermitirEscribir);
             // 
             // btnAceptar
             // 

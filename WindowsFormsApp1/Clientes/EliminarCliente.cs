@@ -15,42 +15,38 @@ namespace WindowsFormsApp1.Clientes
     public partial class EliminarCliente : Form
     {
         public string celda;
-
+        Genericas gen = new Genericas();
+        N_Clientes nc = new N_Clientes();
         public EliminarCliente()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        #endregion
 
         private void EliminarCliente_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Clientes Cli = new N_Clientes();
-            Grilla.DataSource = Cli.getTabla();
+            Grilla.DataSource = nc.getTabla();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -63,7 +59,6 @@ namespace WindowsFormsApp1.Clientes
         {
             if (txtCliente.Text != "")
             {
-                N_Clientes Cli = new N_Clientes();
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -72,7 +67,6 @@ namespace WindowsFormsApp1.Clientes
         private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = Grilla.CurrentRow;
-
             celda = Convert.ToString(row.Cells["Id Cliente"].Value);
             txtCliente.Text = celda;
         }

@@ -28,6 +28,11 @@ namespace DAO
 
             ds.RealizarConsulta(Consulta);
         }
+        public void EliminarVenta(int id)
+        {
+            string Consulta = "UPDATE Venta SET Estado = 0 WHERE idPedido = " + id;
+            ds.RealizarConsulta(Consulta);
+        }
 
 
         /*      public void ArmarParametrosVenta(ref SqlCommand Comando, Ventas Ven)

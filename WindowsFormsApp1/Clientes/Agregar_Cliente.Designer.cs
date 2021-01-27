@@ -221,7 +221,6 @@
             this.txtTelefono.Size = new System.Drawing.Size(318, 20);
             this.txtTelefono.TabIndex = 5;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirSoloNumeros);
             // 
             // Agregar_Cliente
             // 

@@ -13,6 +13,8 @@ namespace WindowsFormsApp1.Mercaderia
 {
     public partial class Ver_Mercaderia : Form
     {
+
+        N_Producto Pro = new N_Producto();
         public Ver_Mercaderia()
         {
             InitializeComponent();
@@ -21,15 +23,13 @@ namespace WindowsFormsApp1.Mercaderia
         private void Ver_Mercaderia_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Mercaderia Mer = new N_Mercaderia();
-            Grilla.DataSource = Mer.getTabla();
+            Grilla.DataSource = Pro.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            N_Mercaderia Mer = new N_Mercaderia();
-            Grilla.DataSource = Mer.getTabla();
+            Grilla.DataSource = Pro.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }

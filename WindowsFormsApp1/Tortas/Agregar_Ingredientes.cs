@@ -17,7 +17,9 @@ namespace WindowsFormsApp1.Tortas
         static public DataTable lista = new DataTable();
         static public string Celda;
         static public string Unidad;
-
+        N_Producto np = new N_Producto();
+        N_IngredienteTorta nit = new N_IngredienteTorta();
+        Genericas gen = new Genericas();
         public Agregar_Ingredientes()
         {
             InitializeComponent();
@@ -67,58 +69,38 @@ namespace WindowsFormsApp1.Tortas
             return Mensaje;
         }
 
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirLetras(sender, e);
         }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Agregar_Ingredientes_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_IngredienteTorta IT = new N_IngredienteTorta();
             lista.Clear();
             GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // lista.Reset();
@@ -134,8 +116,7 @@ namespace WindowsFormsApp1.Tortas
 
         private void btnMercaderia_Click(object sender, EventArgs e)
         {
-            N_Mercaderia Mer = new N_Mercaderia();
-            GrillaProd.DataSource = Mer.getTablaMerCom();
+            GrillaProd.DataSource = np.getTablaProCom();
             GrillaProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaProd.Visible = true;
         }
@@ -190,7 +171,7 @@ namespace WindowsFormsApp1.Tortas
             IT.setCantidad(float.Parse(nudCant.Text.ToString()));
             IT.setCosto(float.Parse(txtCosto.Text.ToString()));
             IT.setEstado(true);
-            IT.setIdMer(int.Parse(txtProd.Text.ToString()));
+            IT.setIdPro(int.Parse(txtProd.Text.ToString()));
             IT.setTorta(int.Parse(txtTorta.Text.ToString()));
             N_IngredienteTorta Ing = new N_IngredienteTorta();
             Ing.datosIng(IT);
@@ -203,8 +184,7 @@ namespace WindowsFormsApp1.Tortas
             Celda = Convert.ToString(row.Cells["Id Producto"].Value);
             txtProd.Text = Celda;
             GrillaProd.Visible = false;
-            N_Mercaderia Mer = new N_Mercaderia();
-            Unidad = Mer.Unidad(int.Parse(txtProd.Text.ToString()));
+            Unidad = np.Unidad(int.Parse(txtProd.Text.ToString()));
             if (Unidad == "Unidad")
             {
                 nudCant.DecimalPlaces = 0;

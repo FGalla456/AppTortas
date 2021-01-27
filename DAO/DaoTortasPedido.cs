@@ -28,6 +28,11 @@ namespace DAO
 
             ds.RealizarConsulta(Consulta);
         }
+        public void EliminarTortaPedido(int idT, int idP)
+        {
+            string Consulta = "UPDATE TortasPedido SET Estado = 0 WHERE idTorta = " + idT + " AND idPedido = " + idP;
+            ds.RealizarConsulta(Consulta);
+        }
 
 
         /*    public void ArmarParametrosTortaPedido(ref SqlCommand Comando, Tortas_x_Pedido TP)

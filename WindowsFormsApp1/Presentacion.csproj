@@ -105,22 +105,23 @@
     <Compile Include="Compras\Eliminar_Detalle.Designer.cs">
       <DependentUpon>Eliminar_Detalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mercaderia\Agregar_Mercaderia.cs">
+    <Compile Include="Genericas.cs" />
+    <Compile Include="Productos\Agregar_Mercaderia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mercaderia\Agregar_Mercaderia.Designer.cs">
+    <Compile Include="Productos\Agregar_Mercaderia.Designer.cs">
       <DependentUpon>Agregar_Mercaderia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mercaderia\Eliminar_Mercaderia.cs">
+    <Compile Include="Productos\Eliminar_Mercaderia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mercaderia\Eliminar_Mercaderia.Designer.cs">
+    <Compile Include="Productos\Eliminar_Mercaderia.Designer.cs">
       <DependentUpon>Eliminar_Mercaderia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mercaderia\Ver_Mercaderia.cs">
+    <Compile Include="Productos\Ver_Mercaderia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mercaderia\Ver_Mercaderia.Designer.cs">
+    <Compile Include="Productos\Ver_Mercaderia.Designer.cs">
       <DependentUpon>Ver_Mercaderia.cs</DependentUpon>
     </Compile>
     <Compile Include="Carteles\SeleccionarEliminacionCompra.cs">
@@ -263,13 +264,13 @@
     <EmbeddedResource Include="Compras\Eliminar_Detalle.resx">
       <DependentUpon>Eliminar_Detalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mercaderia\Agregar_Mercaderia.resx">
+    <EmbeddedResource Include="Productos\Agregar_Mercaderia.resx">
       <DependentUpon>Agregar_Mercaderia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mercaderia\Eliminar_Mercaderia.resx">
+    <EmbeddedResource Include="Productos\Eliminar_Mercaderia.resx">
       <DependentUpon>Eliminar_Mercaderia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mercaderia\Ver_Mercaderia.resx">
+    <EmbeddedResource Include="Productos\Ver_Mercaderia.resx">
       <DependentUpon>Ver_Mercaderia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Carteles\SeleccionarEliminacionCompra.resx">

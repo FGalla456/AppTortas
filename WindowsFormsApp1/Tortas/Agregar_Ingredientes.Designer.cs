@@ -176,7 +176,7 @@
             this.nudCant.Size = new System.Drawing.Size(237, 20);
             this.nudCant.TabIndex = 62;
             this.nudCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirSoloNumeros);
+            this.nudCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirNumeros);
             // 
             // GrillaAgregar
             // 

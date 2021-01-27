@@ -41,6 +41,12 @@ namespace DAO
             ds.RealizarConsulta(Consulta);
         }
 
+        public void EliminarPedido(int id)
+        {
+            string Consulta = "UPDATE Pedido SET Estado = 0 WHERE idPedido = " + id;
+            ds.RealizarConsulta(Consulta);
+        }
+
         /*
                 public void ArmarParametrosPedido(ref SqlCommand Comando, Pedidos Ped)
                 {

@@ -13,49 +13,54 @@ namespace WindowsFormsApp1.Mercaderia
 {
     public partial class Eliminar_Mercaderia : Form
     {
+        N_Producto Pro = new N_Producto();
+        Genericas gen = new Genericas();
         public Eliminar_Mercaderia()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_Mercaderia_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Mercaderia Mer = new N_Mercaderia();
-            Grilla.DataSource = Mer.getTabla();
+            Grilla.DataSource = Pro.getTabla();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtMercaderia.Text != "")
             {
-                N_Mercaderia Mer = new N_Mercaderia();
-                Mer.eliminarMercaderia(int.Parse(txtMercaderia.Text.ToString()));
+                Pro.eliminarProducto(int.Parse(txtMercaderia.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }

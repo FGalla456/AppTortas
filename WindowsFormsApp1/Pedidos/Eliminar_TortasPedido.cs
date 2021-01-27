@@ -13,49 +13,55 @@ namespace WindowsFormsApp1.Pedidos
 {
     public partial class Eliminar_TortasPedido : Form
     {
+
+        Genericas gen = new Genericas();
+        N_TortasPedido ntp = new N_TortasPedido();
         public Eliminar_TortasPedido()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_TortasPedido_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_TortasPedido TP = new N_TortasPedido();
-            Grilla.DataSource = TP.getTabla();
+            Grilla.DataSource = ntp.getTabla();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtPedido.Text != "" && txtTorta.Text != "")
             {
-                N_TortasPedido TP = new N_TortasPedido();
-                TP.eliminarTP(int.Parse(txtTorta.Text.ToString()),int.Parse(txtPedido.Text.ToString()));
+                ntp.eliminarTP(int.Parse(txtTorta.Text.ToString()),int.Parse(txtPedido.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -63,8 +69,8 @@ namespace WindowsFormsApp1.Pedidos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-                btnAceptar.Enabled = false;
-                this.Close();
+            btnAceptar.Enabled = false;
+            this.Close();
         }
     }
 }

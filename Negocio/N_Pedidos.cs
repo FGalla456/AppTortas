@@ -12,34 +12,31 @@ namespace Negocio
     public class N_Pedidos
     {
 
+        DaoPedidos Ped = new DaoPedidos();
         public DataTable getTabla()
         {
-            DaoPedidos dao = new DaoPedidos();
-            return dao.getTablaPedidos();
+            return Ped.getTablaPedidos();
         }
 
         public DataTable getTablaEntregados()
         {
-            DaoPedidos dao = new DaoPedidos();
-            return dao.getTablaPedidosEntregados();
+            return Ped.getTablaPedidosEntregados();
         }
 
         public DataTable getTablaPedVen()
         {
-            DaoPedidos dao = new DaoPedidos();
-            return dao.getTablaPedVen();
+            return Ped.getTablaPedVen();
         }
 
-        public void datosPed(Pedidos Ped)
+        public void datosPed(Pedidos ped)
         {
-            DaoPedidos Pedi = new DaoPedidos();
-            Pedi.InsertarPedidos(Ped);
+
+            Ped.InsertarPedidos(ped);
         }
 
         public void eliminarPedido(int codigo)
         {
-            DaoPedidos Ped = new DaoPedidos();
-           // Ped.eliminarPedSQL(codigo);
+            Ped.EliminarPedido(codigo);
         }
 
     }

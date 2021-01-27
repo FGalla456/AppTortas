@@ -11,23 +11,22 @@ namespace Negocio
 {
     public class N_Clientes
     {
+        DaoClientes Cli = new DaoClientes();
         public DataTable getTabla()
         {
-            DaoClientes dao = new DaoClientes();
-            return dao.getTablaClientes();
+            return Cli.getTablaClientes();
         }
 
-        public void datosCli(Clientes Cli)
+        public void datosCli(Clientes cli)
         {
-            DaoClientes clien = new DaoClientes();
-            clien.InsertarCliente(Cli);
+            Cli.InsertarCliente(cli);
         }
 
-   /*     public void eliminarCliente(int codigo)
+        public void eliminarCliente(int codigo)
         {
-            DaoClientes Cli = new DaoClientes();
-            Cli.eliminarcliSQL(codigo);
-        }*/
+
+            Cli.EliminarCliente(codigo);
+        }
 
     }
 }

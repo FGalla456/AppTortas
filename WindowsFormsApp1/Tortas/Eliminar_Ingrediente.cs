@@ -13,49 +13,57 @@ namespace WindowsFormsApp1.Tortas
 {
     public partial class Eliminar_Ingrediente : Form
     {
+
+        Genericas gen = new Genericas();
+        N_IngredienteTorta nit = new N_IngredienteTorta();
+
         public Eliminar_Ingrediente()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
+
 
         private void Eliminar_Ingrediente_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_IngredienteTorta IT = new N_IngredienteTorta();
-            Grilla.DataSource = IT.getTabla();
+            Grilla.DataSource = nit.getTabla();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtMerc.Text != "" && txtTorta.Text != "")
             {
-                N_IngredienteTorta IT = new N_IngredienteTorta();
-                IT.eliminarIngrediente(int.Parse(txtTorta.Text.ToString()),int.Parse(txtMerc.Text.ToString()));
+                nit.eliminarIngrediente(int.Parse(txtTorta.Text.ToString()),int.Parse(txtMerc.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }

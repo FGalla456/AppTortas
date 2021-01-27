@@ -10,14 +10,15 @@ using System.Windows.Forms;
 using Negocio;
 using Entidad;
 
-namespace WindowsFormsApp1.Tortas
+namespace WindowsFormsApp1.Mercaderia
 {
-    public partial class Agregar_Torta : Form
+    public partial class Agregar_Mercaderia : Form
     {
+
+        N_Producto NP = new N_Producto();
+        Producto Pro = new Producto();
         Genericas gen = new Genericas();
-        Entidad.Tortas Tor = new Entidad.Tortas();
-        N_Tortas nt = new N_Tortas();
-        public Agregar_Torta()
+        public Agregar_Mercaderia()
         {
             InitializeComponent();
         }
@@ -25,10 +26,6 @@ namespace WindowsFormsApp1.Tortas
         private string ConstruirMensaje()
         {
             string Mensaje = null;
-            if (txtTorta.Text == "")
-            {
-                Mensaje = "Id Torta";
-            }
             if (txtNombre.Text == "")
             {
                 if (Mensaje == null)
@@ -40,18 +37,26 @@ namespace WindowsFormsApp1.Tortas
                     Mensaje += ", Nombre";
                 }
             }
-            if (txtCosto.Text == "")
+            if (cbUnidad.Text == "")
             {
                 if (Mensaje == null)
                 {
-                    Mensaje = "Costo";
+                    Mensaje = "Unidad";
                 }
                 else
                 {
-                    Mensaje += ", Costo";
+                    Mensaje += ", Unidad";
                 }
             }
             return Mensaje;
+        }
+
+        private void Agregar_Mercaderia_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            cbUnidad.Items.Add("Unidad");
+            cbUnidad.Items.Add("Kilogramos");
+            cbUnidad.Items.Add("Litros");
         }
 
         #region KeyPress
@@ -82,17 +87,18 @@ namespace WindowsFormsApp1.Tortas
         }
 
         #endregion
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
-            if (txtTorta.Text !="" && txtNombre.Text != "" && txtCosto.Text != "")
+            if (txtNombre.Text != "" && cbUnidad.Text !="")
             {
-                Tor.setCosto(float.Parse(txtCosto.Text.ToString()));
-                Tor.setEstado(true);
-                Tor.setNombre(txtNombre.Text.ToString());
-                Tor.setTorta(int.Parse(txtTorta.Text.ToString()));
-
-                nt.datosTor(Tor);
+                Pro.setNombre(txtNombre.Text.ToString());
+                Pro.setPrecioT(0);
+                Pro.setPrecioU(0);
+                Pro.setStock(0);
+                Pro.setUnidad(cbUnidad.Text.ToString());
+                NP.datosPro(Pro);
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -103,9 +109,10 @@ namespace WindowsFormsApp1.Tortas
             }
         }
 
-        private void Agregar_Torta_Load(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Dock = DockStyle.Fill;
+            btnCancelar.Enabled = false;
+            this.Close();
         }
     }
 }

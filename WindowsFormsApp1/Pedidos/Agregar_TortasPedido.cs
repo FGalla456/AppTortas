@@ -14,6 +14,10 @@ namespace WindowsFormsApp1
 {
     public partial class Agregar_TortasPedido : Form
     {
+        Genericas gen = new Genericas();
+        N_TortasPedido ntp = new N_TortasPedido();
+        N_Tortas nt = new N_Tortas();
+        Tortas_x_Pedido TP = new Tortas_x_Pedido();
         static public DataTable lista = new DataTable();
         static public string CeldaT; /// Guarda el Codigo de Torta
         static public string CeldaC; ///Guarda el Costo de Produccion
@@ -79,83 +83,38 @@ namespace WindowsFormsApp1
             return Mensaje;
         }
 
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
 
-        private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirLetras(sender, e);
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.NoPermitirEscribir(sender, e);
         }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Agregar_TortasPedido_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_TortasPedido TP = new N_TortasPedido();
-
             lista.Clear();
             GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             // lista.Reset();
@@ -172,8 +131,7 @@ namespace WindowsFormsApp1
 
         private void btnTorta_Click(object sender, EventArgs e)
         {
-            N_Tortas Tor = new N_Tortas();
-            GrillaTorta.DataSource = Tor.getTabla();
+            GrillaTorta.DataSource = nt.getTabla();
             GrillaTorta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaTorta.Visible = true;
         }
@@ -219,7 +177,6 @@ namespace WindowsFormsApp1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Tortas_x_Pedido TP = new Tortas_x_Pedido();
             TP.setCantidad(int.Parse(nudCant.Text.ToString()));
             ///  TP.setCosto(); ///Agregar despues
             TP.setEstado(true);
@@ -227,8 +184,7 @@ namespace WindowsFormsApp1
             TP.setPrecioV(float.Parse(txtVenta.Text.ToString()));
             TP.setTorta(int.Parse(txtTorta.Text.ToString()));
             TP.setTotal(float.Parse(txtCosto.Text.ToString()));
-            N_TortasPedido T = new N_TortasPedido();
-            T.datosTP(TP);
+            ntp.datosTP(TP);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

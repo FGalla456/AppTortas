@@ -35,6 +35,12 @@ namespace DAO
             ds.RealizarConsulta(Consulta);
         }
 
+        public void EliminarDetalleCompra(int idC, int idP)
+        {
+            string Consulta = "UPDATE DetalleCompra SET Estado = 0 WHERE idCompra = " + idC + " AND idProducto = " + idP;
+            ds.RealizarConsulta(Consulta);
+        }
+
         /*
        public void ArmarParametrosDetalleCompras(ref SqlCommand Comando, DataTable fila, int i)
        {

@@ -35,6 +35,12 @@ namespace DAO
             ds.RealizarConsulta(Consulta);
         }
 
+        public void EliminarCliente(int id)
+        {
+            string Consulta = "UPDATE Cliente SET Estado = 0 WHERE idCliente = " + id;
+            ds.RealizarConsulta(Consulta);
+        }
+
         /*
         public void ArmarParametrosClientes(ref SqlCommand Comando, Clientes cli)
         {
@@ -105,5 +111,5 @@ namespace DAO
             return count + 1;
         }*/
 
-     }
+    }
 }

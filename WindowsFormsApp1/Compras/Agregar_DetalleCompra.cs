@@ -21,7 +21,9 @@ namespace WindowsFormsApp1.Compras
         static public bool Punto = new bool();
         static public string Celda;
         static public string Unidad;
-
+        N_DetalleCompra dc = new N_DetalleCompra();
+        N_Producto NP = new N_Producto();
+        Genericas gen = new Genericas();
         public Agregar_DetalleCompra()
 		{
 			InitializeComponent();
@@ -140,166 +142,53 @@ namespace WindowsFormsApp1.Compras
                 lista.Columns.Add("Precio", typeof(float));
             }
             btnAceptar.Enabled = false;
-            N_DetalleCompra det = new N_DetalleCompra();
             if (var == false)
             {
                 //    btnfact.Visible = false;
             }
         }
 
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
 
-        private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirLetras(sender, e);
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.NoPermitirEscribir(sender, e);
         }
 
-        private void NroCompra_KeyPress(object sender, KeyPressEventArgs e)
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
         {
-            NoPermitirEscribir(sender, e);
+            gen.PermitirLetrasEspacio(sender, e, Texto);
         }
 
-        private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
         {
-            PermitirSoloNumeros(sender, e);
-        }
-
-        private void bunifuCustomTextbox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            PermitirSoloNumeros(sender, e);
+             gen.PermitirDecimales(sender, e, Texto);
         }
 
         private void txtPU_KeyPress(object sender, KeyPressEventArgs e)
         {
-            PermitirSoloNumeros(sender, e);
-            if (txtPU.Text == "")
-            {
-                if (e.KeyChar == '0')
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.' || e.KeyChar == ',')
-                {
-                    e.Handled = true;
-                }
-            }
-            if (txtPU.Text != "")
-            {
-                if (e.KeyChar == '.' || e.KeyChar == ',')
-                {
-                    if (Coma == false)
-                    {
-                        e.KeyChar = ',';
-                        e.Handled = false;
-                        Coma = true;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-            }
+            PerimitirDecimales(sender, e, txtPU.Text);
         }
 
         private void nudCant_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (nudCant.Text == "")
-            {
-                if (e.KeyChar == '0')
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.' || e.KeyChar == ',')
-                {
-                    e.Handled = true;
-                }
-            }
-            if (nudCant.Text != "")
-            {
-                if (e.KeyChar == '.' || e.KeyChar == ',')
-                {
-                    if (Punto == false)
-                    {
-                        e.KeyChar = ',';
-                        e.Handled = false;
-                        Punto = true;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-            }
+            PerimitirDecimales(sender, e, nudCant.Value.ToString());
         }
 
+        #endregion
         private void btnMercaderia_Click(object sender, EventArgs e)
         {
-            N_Mercaderia Mer = new N_Mercaderia();
+
             GrillaProd.DefaultCellStyle.ForeColor = Color.White;
             GrillaProd.DefaultCellStyle.BackColor = Color.FromArgb(30,30,46);
             GrillaProd.BackgroundColor = Color.FromArgb(30, 30, 46);
@@ -307,7 +196,7 @@ namespace WindowsFormsApp1.Compras
             GrillaProd.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(168, 21, 80);
             GrillaProd.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             GrillaProd.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(168, 21, 80);
-            GrillaProd.DataSource = Mer.getTablaMerCom();
+            GrillaProd.DataSource = NP.getTablaProCom();
             GrillaProd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaProd.Visible = true;
         }
@@ -341,7 +230,6 @@ namespace WindowsFormsApp1.Compras
             string Mensaje;
             if (NroCompra.Text != "" && txtIdProd.Text != "" && txtPU.Text != "" && nudCant.Text != "")
             {
-                Detalle_x_Compra dc = new Detalle_x_Compra();
                 foreach (DataRow row in lista.Rows)
                 {
                     if (row["Id producto"].ToString() == txtIdProd.Text.ToString())
@@ -382,8 +270,7 @@ namespace WindowsFormsApp1.Compras
             Celda = Convert.ToString(row.Cells["Id Producto"].Value);
             txtIdProd.Text = Celda;
             GrillaProd.Visible = false;
-            N_Mercaderia Mer = new N_Mercaderia();
-            Unidad = Mer.Unidad(int.Parse(txtIdProd.Text.ToString()));
+            Unidad = NP.Unidad(int.Parse(txtIdProd.Text.ToString()));
             if(Unidad == "Unidad")
             {
                 nudCant.DecimalPlaces = 0;

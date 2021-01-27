@@ -17,6 +17,11 @@ En Visual
 - Agregar los Forms de "Actualizar" en la presentacion de todas las clases
 - Agregar las funciones de "Actualizar" en el dao de todas las clases
 
+- Verificar La funcion de KeyPress de Domicilio en Agregar Cliente
+
+-Crear Una Funcion Para los Mensajes
+
+-Acomodar las Funciones de todo el proyecto en Regiones
 
 Posibles Mejoras
 

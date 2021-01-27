@@ -15,6 +15,10 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class Agregar_Cliente : Form
     {
+
+        Genericas gen = new Genericas();
+        N_Clientes nc = new N_Clientes();
+        Entidad.Clientes Cli = new Entidad.Clientes();
         static public bool espacio = new bool(); /// Cambia a true cuando se presiona el espacio en el textbox de Domicilio
         static public bool N = new bool(); ///Cambia a true cuando se presiona el espacio en el textbox de Nombre
         static public bool A = new bool(); ///Cambia a true cuando se presiona el espacio en el textbox de Apellido
@@ -28,6 +32,38 @@ namespace WindowsFormsApp1.Clientes
         }
 
 
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirNumeros(sender, e);
+        }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto) 
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             PermitirLetrasEspacio(sender, e, txtNombre.Text);
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             PermitirLetrasEspacio(sender, e, txtApellido.Text);
+        }
+
+        #endregion
         private string ConstruirMensaje()
         {
             string Mensaje = null;
@@ -71,87 +107,13 @@ namespace WindowsFormsApp1.Clientes
             }
             return Mensaje;
         }
-
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
         private void Agregar_Cliente_Load(object sender, EventArgs e)
         {
-            N_Clientes Cli = new N_Clientes();
+
             this.Dock = DockStyle.Fill;
             D = 0;
             Numeros = 0;
         }
-
         private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtDomicilio.Text == "")
@@ -239,74 +201,17 @@ namespace WindowsFormsApp1.Clientes
                 }
             }
         }
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            PermitirSoloLetras(sender, e);
-            if (txtNombre.Text == "")
-            {
-                if (e.KeyChar == ' ')
-                {
-                    e.Handled = true;
-                }
-            }
-            if (txtNombre.Text != "")
-            {
-                if (e.KeyChar == ' ')
-                {
-                    if (N == false)
-                    {
-                        e.Handled = false;
-                        N = true;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-            }
-        }
-
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            PermitirSoloLetras(sender, e);
-            if (txtApellido.Text == "")
-            {
-                if (e.KeyChar == ' ')
-                {
-                    e.Handled = true;
-                }
-            }
-            if (txtApellido.Text != "")
-            {
-                if (e.KeyChar == ' ')
-                {
-                    if (A == false)
-                    {
-                        e.Handled = false;
-                        A = true;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-            }
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
             if (txtApellido.Text !="" && txtDomicilio.Text != "" && txtNombre.Text != "" &&  txtTelefono.Text != "")
             {
-                Entidad.Clientes Cli = new Entidad.Clientes();
                 Cli.setApellido(txtApellido.Text.ToString());
                 Cli.setDomicilio(txtDomicilio.Text.ToString());
                 Cli.setEstado(true);
                 Cli.setNombre(txtNombre.Text.ToString());
                 Cli.setTelefono(txtTelefono.Text.ToString());
-                N_Clientes C = new N_Clientes();
-                C.datosCli(Cli);
+                nc.datosCli(Cli);
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -316,7 +221,6 @@ namespace WindowsFormsApp1.Clientes
                 MessageBox.Show("Faltan Cargar: " + Mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             btnCancelar.Enabled = false;

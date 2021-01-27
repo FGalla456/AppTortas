@@ -26,8 +26,14 @@ namespace DAO
         public void InsertarIngrediente(Ingredientes_x_Torta ing)
         {
             string Consulta = "insert into Cliente(idTorta,idProducto,Cantidad,Costo,Estado)" +
-                "values(" + ing.getTorta() + "," + ing.getIdMer() + "," + ing.getCantidad() + "," + ing.getCosto() + ",1)";
+                "values(" + ing.getTorta() + "," + ing.getIdPro() + "," + ing.getCantidad() + "," + ing.getCosto() + ",1)";
 
+            ds.RealizarConsulta(Consulta);
+        }
+
+        public void EliminarIngrediente(int idP,int idT)
+        {
+            string Consulta = "UPDATE Ingrediete SET Estado = 0 WHERE idProducto = " + idP + " AND idTorta = " + idT;
             ds.RealizarConsulta(Consulta);
         }
 

@@ -11,22 +11,21 @@ namespace Negocio
 {
     public class N_Ventas
     {
+
+        DaoVentas Ven = new DaoVentas();
         public DataTable getTabla()
         {
-            DaoVentas dao = new DaoVentas();
-            return dao.getTablaVentas();
+            return Ven.getTablaVentas();
         }
 
-        public void datosVen(Ventas Ven)
+        public void datosVen(Ventas ven)
         {
-            DaoVentas Vent = new DaoVentas();
-            Vent.InsertarVenta(Ven);
+            Ven.InsertarVenta(ven);
         }
 
         public void eliminarVenta(int codigo)
         {
-            DaoVentas Ven = new DaoVentas();
-          //  Ven.eliminarVenSQL(codigo);
+            Ven.EliminarVenta(codigo);
         }
 
     }

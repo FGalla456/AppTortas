@@ -13,49 +13,54 @@ namespace WindowsFormsApp1.Pedidos
 {
     public partial class Eliminar_Pedido : Form
     {
+        Genericas gen = new Genericas();
+        N_Pedidos np = new N_Pedidos();
         public Eliminar_Pedido()
         {
             InitializeComponent();
         }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirDecimales(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_Pedido_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Pedidos Ped = new N_Pedidos();
-            Grilla.DataSource = Ped.getTablaEntregados();
+            Grilla.DataSource = np.getTablaEntregados();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtPedido.Text != "")
             {
-                N_Pedidos Ped = new N_Pedidos();
-                Ped.eliminarPedido(int.Parse(txtPedido.Text.ToString()));
+                np.eliminarPedido(int.Parse(txtPedido.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }

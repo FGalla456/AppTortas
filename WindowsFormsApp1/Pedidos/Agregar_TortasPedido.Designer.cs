@@ -79,7 +79,7 @@
             this.txtVenta.Name = "txtVenta";
             this.txtVenta.Size = new System.Drawing.Size(237, 20);
             this.txtVenta.TabIndex = 29;
-            this.txtVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirSoloNumeros);
+            this.txtVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirNumeros);
             // 
             // bunifuCustomLabel4
             // 
@@ -185,7 +185,7 @@
             this.nudCant.Size = new System.Drawing.Size(237, 20);
             this.nudCant.TabIndex = 33;
             this.nudCant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirSoloNumeros);
+            this.nudCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitirNumeros);
             // 
             // txtCosto
             // 

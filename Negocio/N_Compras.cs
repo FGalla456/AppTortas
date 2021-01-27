@@ -11,22 +11,20 @@ namespace Negocio
 {
     public class N_Compras
     {
+		DaoCompras Com = new DaoCompras();
 		public DataTable getTabla()
 		{
-			DaoCompras dao = new DaoCompras();
-			return dao.getTablaCompras();
+			return Com.getTablaCompras();
 		}
 
 		public void datosCom(Compras com)
 		{
-			DaoCompras Comp = new DaoCompras();
-			Comp.InsertarCompra(com);
+			Com.InsertarCompra(com);
 		}
 
         public void eliminarCompra(int codigo)
         {
-            DaoCompras Com = new DaoCompras();
-     //       Com.eliminarcomSQL(codigo);
+			Com.EliminarCompra(codigo);
         }
 
         //public bool ExisteCom(string fac)

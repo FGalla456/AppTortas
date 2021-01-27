@@ -27,6 +27,11 @@ namespace DAO
 
             ds.RealizarConsulta(Consulta);
         }
+        public void EliminarTorta(int id)
+        {
+            string Consulta = "UPDATE Torta SET Estado = 0 WHERE idTorta = " + id;
+            ds.RealizarConsulta(Consulta);
+        }
 
         /*   public void ArmarParametrosTorta(ref SqlCommand Comando, Tortas Tor)
            {

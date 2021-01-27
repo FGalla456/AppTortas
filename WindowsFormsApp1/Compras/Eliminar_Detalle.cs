@@ -13,6 +13,10 @@ namespace WindowsFormsApp1.Compras
 {
     public partial class Eliminar_Detalle : Form
     {
+
+        Genericas gen = new Genericas();
+        N_Compras com = new N_Compras();
+        N_DetalleCompra dc = new N_DetalleCompra();
         public Eliminar_Detalle()
         {
             InitializeComponent();
@@ -21,36 +25,35 @@ namespace WindowsFormsApp1.Compras
         static public string celda;
         static public bool Detalle = new bool();
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        #endregion
 
         private void Eliminar_Detalle_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Compras DC = new N_Compras();
-            Grilla.DataSource = DC.getTabla();
+            Grilla.DataSource = com.getTabla();
             Detalle = false;
         }
 
@@ -58,8 +61,7 @@ namespace WindowsFormsApp1.Compras
         {
             if (txtCompra.Text != "" && txtMercaderia.Text != "")
             {
-                N_DetalleCompra DC = new N_DetalleCompra();
-                DC.eliminarDetalle(int.Parse(txtCompra.Text.ToString()),int.Parse(txtMercaderia.Text.ToString()));
+                dc.eliminarDetalle(int.Parse(txtCompra.Text.ToString()),int.Parse(txtMercaderia.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -79,8 +81,7 @@ namespace WindowsFormsApp1.Compras
                 celda = Convert.ToString(row.Cells["Numero de Compra"].Value);
                 txtCompra.Text = celda;
                 Detalle = true;
-                N_DetalleCompra DC = new N_DetalleCompra();
-                Grilla.DataSource = DC.getTabla();
+                Grilla.DataSource = dc.getTabla();
             }
             else
             {
@@ -89,8 +90,7 @@ namespace WindowsFormsApp1.Compras
                     celda = Convert.ToString(row.Cells["Id Producto"].Value);
                     txtMercaderia.Text = celda;
                     Detalle = false;
-                    N_Compras DC = new N_Compras();
-                    Grilla.DataSource = DC.getTabla();
+                    Grilla.DataSource = com.getTabla();
                 }
             }
         }

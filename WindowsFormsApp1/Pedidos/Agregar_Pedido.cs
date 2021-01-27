@@ -14,6 +14,11 @@ namespace WindowsFormsApp1.Pedidos
 {
     public partial class Agregar_Pedido : Form
     {
+        Genericas gen = new Genericas();
+        Entidad.Pedidos Ped = new Entidad.Pedidos();
+        N_Pedidos np = new N_Pedidos();
+        N_Clientes nc = new N_Clientes();
+
         public Agregar_Pedido()
         {
             InitializeComponent();
@@ -71,91 +76,46 @@ namespace WindowsFormsApp1.Pedidos
             return Mensaje;
         }
 
-        private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
-    {
-        if (Char.IsLetter(e.KeyChar))
-        {
-            e.Handled = true;
-        }
-        else if (Char.IsDigit(e.KeyChar))
-        {
-            e.Handled = false;
-        }
-        else if (Char.IsControl(e.KeyChar))
-        {
-            e.Handled = false;
-        }
-        else if (Char.IsSeparator(e.KeyChar))
-        {
-            e.Handled = true;
-        }
-        else
-        {
-            e.Handled = true;
-        }
-    }
+        #region KeyPress
 
-        private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
-    {
-        if (Char.IsLetter(e.KeyChar))
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
         {
-            e.Handled = false;
+            gen.PermitirNumeros(sender, e);
         }
-        else if (Char.IsDigit(e.KeyChar))
-        {
-            e.Handled = true;
-        }
-        else if (Char.IsControl(e.KeyChar))
-        {
-            e.Handled = false;
-        }
-        else if (Char.IsSeparator(e.KeyChar))
-        {
-            e.Handled = true;
-        }
-        else
-        {
-            e.Handled = true;
-        }
-    }
 
-        private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
-    {
-        if (Char.IsLetter(e.KeyChar))
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            gen.PermitirLetras(sender, e);
         }
-        else if (Char.IsDigit(e.KeyChar))
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            gen.NoPermitirEscribir(sender, e);
         }
-        else if (Char.IsControl(e.KeyChar))
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
         {
-            e.Handled = true;
+            gen.PermitirLetrasEspacio(sender, e, Texto);
         }
-        else if (Char.IsSeparator(e.KeyChar))
+
+        public void PerimitirDecimales(object sender, KeyPressEventArgs e, string Texto)
         {
-            e.Handled = true;
+            gen.PermitirDecimales(sender, e, Texto);
         }
-        else
-        {
-            e.Handled = true;
-        }
-    }
+
+        #endregion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
             if ( txtIdCliente.Text != "" && txtCosto.Text != "" && txtTotal.Text != "" && dtpFecha.Text != "")
             { 
-            Entidad.Pedidos Ped = new Entidad.Pedidos();
             Ped.setCliente(int.Parse(txtIdCliente.Text.ToString()));
             Ped.setCosto(float.Parse(txtCosto.Text.ToString()));
             Ped.setEstado(true);
             Ped.setFecha(dtpFecha.Text.ToString());
             Ped.setPrecioV(float.Parse(txtTotal.Text.ToString()));
-            N_Pedidos P = new N_Pedidos();
-            P.datosPed(Ped);
+            np.datosPed(Ped);
             }
             else
             {
@@ -173,14 +133,12 @@ namespace WindowsFormsApp1.Pedidos
         private void Agregar_Pedido_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Pedidos Ped = new N_Pedidos();
             dtpFecha.Text = DateTime.Today.ToString();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            N_Clientes Cli = new N_Clientes();
-            GrillaCliente.DataSource = Cli.getTabla();
+            GrillaCliente.DataSource = nc.getTabla();
             GrillaCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaCliente.Visible = true;
         }

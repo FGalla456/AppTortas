@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 	public partial class Agregar_Compra : Form
 	{
         public DataTable lista = new DataTable();
-
+        Genericas gen = new Genericas();
         public Agregar_Compra()
 		{
 			InitializeComponent();
@@ -118,93 +118,29 @@ namespace WindowsFormsApp1
             txtTotal.Text = Total.ToString();
         }
 
-		private void PermitirSoloNumeros(object sender, KeyPressEventArgs e)
-		{
-			if (Char.IsLetter(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else if (Char.IsDigit(e.KeyChar))
-			{
-				e.Handled = false;
-			}
-			else if (Char.IsControl(e.KeyChar))
-			{
-				e.Handled = false;
-			}
-			else if (Char.IsSeparator(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else
-			{
-				e.Handled = true;
-			}
-		}
+        #region KeyPress
 
-		private void PermitirSoloLetras(object sender, KeyPressEventArgs e)
-		{
-			if (Char.IsLetter(e.KeyChar))
-			{
-				e.Handled = false;
-			}
-			else if (Char.IsDigit(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else if (Char.IsControl(e.KeyChar))
-			{
-				e.Handled = false;
-			}
-			else if (Char.IsSeparator(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else
-			{
-				e.Handled = true;
-			}
-		}
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirNumeros(sender, e);
+        }
 
-		private void NoPermitirEscribir(object sender, KeyPressEventArgs e)
-		{
-			if (Char.IsLetter(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else if (Char.IsDigit(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else if (Char.IsControl(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else if (Char.IsSeparator(e.KeyChar))
-			{
-				e.Handled = true;
-			}
-			else
-			{
-				e.Handled = true;
-			}
-		}
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
 
-		private void NroCompra_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			NoPermitirEscribir(sender, e);
-		}
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
 
-		private void dtpFecha_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			NoPermitirEscribir(sender, e);
-		}
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto)
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
 
-		private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			NoPermitirEscribir(sender, e);
-		}
-
+        #endregion
         private void btnAceptar_Click(object sender, EventArgs e)
         {
     //        AbrirHijo<Compras.Agregar_DetalleCompra>();
