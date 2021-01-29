@@ -15,42 +15,20 @@ namespace WindowsFormsApp1.Mercaderia
     public partial class Agregar_Mercaderia : Form
     {
 
+        #region Declaraciones
+
         N_Producto NP = new N_Producto();
         Producto Pro = new Producto();
         Genericas gen = new Genericas();
+
+        #endregion
+
+        #region Inicio
+
         public Agregar_Mercaderia()
         {
             InitializeComponent();
         }
-
-        private string ConstruirMensaje()
-        {
-            string Mensaje = null;
-            if (txtNombre.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Nombre";
-                }
-                else
-                {
-                    Mensaje += ", Nombre";
-                }
-            }
-            if (cbUnidad.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Unidad";
-                }
-                else
-                {
-                    Mensaje += ", Unidad";
-                }
-            }
-            return Mensaje;
-        }
-
         private void Agregar_Mercaderia_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
@@ -58,6 +36,8 @@ namespace WindowsFormsApp1.Mercaderia
             cbUnidad.Items.Add("Kilogramos");
             cbUnidad.Items.Add("Litros");
         }
+
+        #endregion
 
         #region KeyPress
 
@@ -88,6 +68,7 @@ namespace WindowsFormsApp1.Mercaderia
 
         #endregion
 
+        #region Botones
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
@@ -114,5 +95,40 @@ namespace WindowsFormsApp1.Mercaderia
             btnCancelar.Enabled = false;
             this.Close();
         }
+
+        #endregion
+
+        #region Eventos
+
+        private string ConstruirMensaje()
+        {
+            string Mensaje = null;
+            if (txtNombre.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Nombre";
+                }
+                else
+                {
+                    Mensaje += ", Nombre";
+                }
+            }
+            if (cbUnidad.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Unidad";
+                }
+                else
+                {
+                    Mensaje += ", Unidad";
+                }
+            }
+            return Mensaje;
+        }
+
+        #endregion
+
     }
 }

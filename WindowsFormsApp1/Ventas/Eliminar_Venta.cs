@@ -13,12 +13,29 @@ namespace WindowsFormsApp1.Ventas
 {
     public partial class Eliminar_Venta : Form
     {
+
+        #region Declaraciones
+        
         Genericas gen = new Genericas();
         N_Ventas nv = new N_Ventas();
+
+        #endregion
+
+        #region Inicio
+
         public Eliminar_Venta()
         {
             InitializeComponent();
         }
+
+        private void Eliminar_Venta_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = nv.getTabla();
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -49,12 +66,7 @@ namespace WindowsFormsApp1.Ventas
 
         #endregion
 
-        private void Eliminar_Venta_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = nv.getTabla();
-        }
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -71,5 +83,8 @@ namespace WindowsFormsApp1.Ventas
                 btnAceptar.Enabled = false;
                 this.Close();
         }
+
+        #endregion
+
     }
 }

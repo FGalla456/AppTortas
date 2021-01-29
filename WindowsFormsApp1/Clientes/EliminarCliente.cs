@@ -14,14 +14,29 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class EliminarCliente : Form
     {
-        public string celda;
-        Genericas gen = new Genericas();
-        N_Clientes nc = new N_Clientes();
+        #region Declaraciones
+
+            public string celda;
+            Genericas gen = new Genericas();
+            N_Clientes nc = new N_Clientes();
+
+        #endregion 
+
+        #region Inicio
+
         public EliminarCliente()
         {
             InitializeComponent();
         }
 
+        private void EliminarCliente_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = nc.getTabla();
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -42,12 +57,7 @@ namespace WindowsFormsApp1.Clientes
 
         #endregion
 
-        private void EliminarCliente_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = nc.getTabla();
-        }
+        #region Botones
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -64,11 +74,17 @@ namespace WindowsFormsApp1.Clientes
             }
         }
 
+        #endregion
+
+        #region Eventos
+
         private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = Grilla.CurrentRow;
             celda = Convert.ToString(row.Cells["Id Cliente"].Value);
             txtCliente.Text = celda;
         }
+
+        #endregion
     }
 }

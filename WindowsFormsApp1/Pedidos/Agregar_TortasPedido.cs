@@ -14,6 +14,9 @@ namespace WindowsFormsApp1
 {
     public partial class Agregar_TortasPedido : Form
     {
+
+        #region Declaraciones
+
         Genericas gen = new Genericas();
         N_TortasPedido ntp = new N_TortasPedido();
         N_Tortas nt = new N_Tortas();
@@ -22,66 +25,33 @@ namespace WindowsFormsApp1
         static public string CeldaT; /// Guarda el Codigo de Torta
         static public string CeldaC; ///Guarda el Costo de Produccion
 
+        #endregion
+
+        #region Inicio
+
         public Agregar_TortasPedido()
         {
             InitializeComponent();
         }
 
-        private string ConstruirMensaje()
+        private void Agregar_TortasPedido_Load(object sender, EventArgs e)
         {
-            string Mensaje = null;
-            if (txtPed.Text == "")
+            this.Dock = DockStyle.Fill;
+            lista.Clear();
+            GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // lista.Reset();
+            if (lista.Columns.Contains("Nº Pedido") == false)
             {
-                Mensaje = "Numero de Pedido";
+                lista.Columns.Add("Nº Pedido", typeof(int));
+                lista.Columns.Add("Id Torta", typeof(int));
+                lista.Columns.Add("Cantidad", typeof(int));
+                lista.Columns.Add("Precio", typeof(float));
+                lista.Columns.Add("Costo", typeof(float));
             }
-            if (txtTorta.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Id Torta";
-                }
-                else
-                {
-                    Mensaje += ", Id Torta";
-                }
-            }
-            if (nudCant.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Cantidad";
-                }
-                else
-                {
-                    Mensaje += ", Cantidad";
-                }
-            }
-            if (txtVenta.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Precio de Vetna";
-                }
-                else
-                {
-                    Mensaje += ", Precio de Venta";
-                }
-
-            }
-            if (txtCosto.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Costo de Produccion";
-                }
-                else
-                {
-                    Mensaje += ", Costo de Produccion";
-                }
-
-            }
-            return Mensaje;
+            btnAceptar.Enabled = false;
         }
+
+        #endregion
 
         #region KeyPress
 
@@ -112,23 +82,7 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        private void Agregar_TortasPedido_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            lista.Clear();
-            GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            // lista.Reset();
-            if (lista.Columns.Contains("Nº Pedido") == false)
-            {
-                lista.Columns.Add("Nº Pedido", typeof(int));
-                lista.Columns.Add("Id Torta", typeof(int));
-                lista.Columns.Add("Cantidad", typeof(int));
-                lista.Columns.Add("Precio", typeof(float));
-                lista.Columns.Add("Costo", typeof(float));
-            }
-            btnAceptar.Enabled = false;
-        }
-
+        #region Botones
         private void btnTorta_Click(object sender, EventArgs e)
         {
             GrillaTorta.DataSource = nt.getTabla();
@@ -193,6 +147,66 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
+        #endregion
+
+        #region Eventos
+
+        private string ConstruirMensaje()
+        {
+            string Mensaje = null;
+            if (txtPed.Text == "")
+            {
+                Mensaje = "Numero de Pedido";
+            }
+            if (txtTorta.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Id Torta";
+                }
+                else
+                {
+                    Mensaje += ", Id Torta";
+                }
+            }
+            if (nudCant.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Cantidad";
+                }
+                else
+                {
+                    Mensaje += ", Cantidad";
+                }
+            }
+            if (txtVenta.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Precio de Vetna";
+                }
+                else
+                {
+                    Mensaje += ", Precio de Venta";
+                }
+
+            }
+            if (txtCosto.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Costo de Produccion";
+                }
+                else
+                {
+                    Mensaje += ", Costo de Produccion";
+                }
+
+            }
+            return Mensaje;
+        }
+
         private void GrillaTorta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = GrillaTorta.CurrentRow;
@@ -203,5 +217,8 @@ namespace WindowsFormsApp1
             txtCosto.Text = CeldaC;
             GrillaTorta.Visible = false;
         }
+
+        #endregion
+
     }
 }

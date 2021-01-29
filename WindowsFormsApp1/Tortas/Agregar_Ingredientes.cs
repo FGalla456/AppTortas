@@ -14,60 +14,42 @@ namespace WindowsFormsApp1.Tortas
 {
     public partial class Agregar_Ingredientes : Form
     {
+        
+        #region Declaraciones
+
         static public DataTable lista = new DataTable();
         static public string Celda;
         static public string Unidad;
         N_Producto np = new N_Producto();
         N_IngredienteTorta nit = new N_IngredienteTorta();
         Genericas gen = new Genericas();
+
+        #endregion
+
+        #region Inicio
+
         public Agregar_Ingredientes()
         {
             InitializeComponent();
         }
 
-        private string ConstruirMensaje()
+        private void Agregar_Ingredientes_Load(object sender, EventArgs e)
         {
-            string Mensaje = null;
-            if (txtTorta.Text == "")
+            this.Dock = DockStyle.Fill;
+            lista.Clear();
+            GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // lista.Reset();
+            if (lista.Columns.Contains("Id Torta") == false)
             {
-                Mensaje = "Id Torta";
+                lista.Columns.Add("Id Torta", typeof(int));
+                lista.Columns.Add("Id Producto", typeof(int));
+                lista.Columns.Add("Cantidad", typeof(float));
+                lista.Columns.Add("Costo", typeof(float));
             }
-            if (txtProd.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Id Producto";
-                }
-                else
-                {
-                    Mensaje += ", Id Producto";
-                }
-            }
-            if (nudCant.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Cantidad";
-                }
-                else
-                {
-                    Mensaje += ", Cantidad";
-                }
-            }
-            if (txtCosto.Text == "")
-            {
-                if (Mensaje == null)
-                {
-                    Mensaje = "Costo";
-                }
-                else
-                {
-                    Mensaje += ", Costo";
-                }
-
-            }
-            return Mensaje;
+            btnAceptar.Enabled = false;
         }
+
+        #endregion
 
         #region KeyPress
 
@@ -98,21 +80,7 @@ namespace WindowsFormsApp1.Tortas
 
         #endregion
 
-        private void Agregar_Ingredientes_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            lista.Clear();
-            GrillaAgregar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            // lista.Reset();
-            if (lista.Columns.Contains("Id Torta") == false)
-            {
-                lista.Columns.Add("Id Torta", typeof(int));
-                lista.Columns.Add("Id Producto", typeof(int));
-                lista.Columns.Add("Cantidad", typeof(float));
-                lista.Columns.Add("Costo", typeof(float));
-            }
-            btnAceptar.Enabled = false;
-        }
+        #region Botones
 
         private void btnMercaderia_Click(object sender, EventArgs e)
         {
@@ -177,6 +145,10 @@ namespace WindowsFormsApp1.Tortas
             Ing.datosIng(IT);
         }
 
+        #endregion
+
+        #region Eventos
+
         private void GrillaProd_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = GrillaProd.CurrentRow;
@@ -196,6 +168,52 @@ namespace WindowsFormsApp1.Tortas
                 nudCant.Increment = 0.1m;
             }
         }
+
+        private string ConstruirMensaje()
+        {
+            string Mensaje = null;
+            if (txtTorta.Text == "")
+            {
+                Mensaje = "Id Torta";
+            }
+            if (txtProd.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Id Producto";
+                }
+                else
+                {
+                    Mensaje += ", Id Producto";
+                }
+            }
+            if (nudCant.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Cantidad";
+                }
+                else
+                {
+                    Mensaje += ", Cantidad";
+                }
+            }
+            if (txtCosto.Text == "")
+            {
+                if (Mensaje == null)
+                {
+                    Mensaje = "Costo";
+                }
+                else
+                {
+                    Mensaje += ", Costo";
+                }
+
+            }
+            return Mensaje;
+        }
+
+        #endregion
 
     }
 }

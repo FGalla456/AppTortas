@@ -13,9 +13,17 @@ namespace WindowsFormsApp1.Compras
 {
 	public partial class Ver_Compras : Form
 	{
+        #region Declaraciones
+
+        N_Compras nc = new N_Compras();
+        N_DetalleCompra ndc = new N_DetalleCompra();
         static public bool SubGrilla = new bool();
 
-		public Ver_Compras()
+        #endregion
+
+        #region Inicio
+
+        public Ver_Compras()
 		{
 			InitializeComponent();
 		}
@@ -23,45 +31,49 @@ namespace WindowsFormsApp1.Compras
 		private void Ver_Compras_Load(object sender, EventArgs e)
 		{
             this.Dock = DockStyle.Fill;
-            N_Compras comp = new N_Compras();
-			GrillaCompras.DataSource = comp.getTabla();
+			GrillaCompras.DataSource = nc.getTabla();
 			GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SubGrilla = false;
 
         }
 
+        #endregion
+
+        #region Botones
         private void Refresh_Click(object sender, EventArgs e)
         {
             if (SubGrilla == false)
             { 
-                N_Compras comp = new N_Compras();
-                GrillaCompras.DataSource = comp.getTabla();
+                GrillaCompras.DataSource = nc.getTabla();
                 GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {
-                N_DetalleCompra DC = new N_DetalleCompra();
-                GrillaCompras.DataSource = DC.getTabla();
+                GrillaCompras.DataSource = ndc.getTabla();
                 GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-        }
-
-        private void GrillaCompras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Atras.Visible = true;
-            SubGrilla = true;
-            N_DetalleCompra DC = new N_DetalleCompra();
-            GrillaCompras.DataSource = DC.getTabla();
-            GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void Atras_Click(object sender, EventArgs e)
         {
             Atras.Visible = false;
             SubGrilla = false;
-            N_Compras comp = new N_Compras();
-            GrillaCompras.DataSource = comp.getTabla();
+            GrillaCompras.DataSource = nc.getTabla();
             GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        #endregion
+
+        #region Eventos
+        private void GrillaCompras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Atras.Visible = true;
+            SubGrilla = true;
+            GrillaCompras.DataSource = ndc.getTabla();
+            GrillaCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        #endregion
+
     }
 }

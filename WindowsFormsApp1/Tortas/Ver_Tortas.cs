@@ -13,7 +13,16 @@ namespace WindowsFormsApp1.Tortas
 {
     public partial class Ver_Tortas : Form
     {
+
+        #region Declaraciones
+
+        N_Tortas nt = new N_Tortas();
+        N_IngredienteTorta nit = new N_IngredienteTorta();
         static public bool SubGrilla = new bool();
+
+        #endregion
+
+        #region Inicio
 
         public Ver_Tortas()
         {
@@ -23,44 +32,52 @@ namespace WindowsFormsApp1.Tortas
         private void Ver_Tortas_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Tortas Tor = new N_Tortas();
-            Grilla.DataSource = Tor.getTabla();
+
+            Grilla.DataSource = nt.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SubGrilla = false;
         }
+
+        #endregion
+
+        #region Botones
 
         private void Refresh_Click(object sender, EventArgs e)
         {
             if (SubGrilla == false)
             {
-                N_Tortas Tor = new N_Tortas();
-                Grilla.DataSource = Tor.getTabla();
+                Grilla.DataSource = nt.getTabla();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {
-                N_IngredienteTorta IT = new N_IngredienteTorta();
-                Grilla.DataSource = IT.getTabla();
+
+                Grilla.DataSource = nit.getTabla();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-        }
-
-        private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Atras.Visible = true;
-            SubGrilla = true;
-            N_IngredienteTorta IT = new N_IngredienteTorta();
-            Grilla.DataSource = IT.getTabla();
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void Atras_Click(object sender, EventArgs e)
         {
             Atras.Visible = false;
             SubGrilla = false;
-            N_Tortas Tor = new N_Tortas();
-            Grilla.DataSource = Tor.getTabla();
+            Grilla.DataSource = nt.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        #endregion
+
+        #region Eventos
+
+        private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Atras.Visible = true;
+            SubGrilla = true;
+            Grilla.DataSource = nit.getTabla();
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        #endregion
+
     }
 }

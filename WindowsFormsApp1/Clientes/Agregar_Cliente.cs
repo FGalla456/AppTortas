@@ -15,55 +15,35 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class Agregar_Cliente : Form
     {
+        #region Declaraciones
 
-        Genericas gen = new Genericas();
-        N_Clientes nc = new N_Clientes();
-        Entidad.Clientes Cli = new Entidad.Clientes();
-        static public bool espacio = new bool(); /// Cambia a true cuando se presiona el espacio en el textbox de Domicilio
-        static public bool N = new bool(); ///Cambia a true cuando se presiona el espacio en el textbox de Nombre
-        static public bool A = new bool(); ///Cambia a true cuando se presiona el espacio en el textbox de Apellido
-        static public bool E = new bool(); ///Cambia a true cuando se presiona un numero en el textbox de Domicilio
-        static public int D = new int(); ///Cuenta la cantidad de veces que se uso el espacio, si se escribo algo antes la variable espacio cambia a false (Se usa solo en domicilio)
-        static public int Numeros = new int();
+            Genericas gen = new Genericas();
+            N_Clientes nc = new N_Clientes();
+            Entidad.Clientes Cli = new Entidad.Clientes();
+            static public bool espacio = new bool(); /// Cambia a true cuando se presiona el espacio en el textbox de Domicilio
+            static public bool E = new bool(); ///Cambia a true cuando se presiona un numero en el textbox de Domicilio
+            static public int D = new int(); ///Cuenta la cantidad de veces que se uso el espacio, si se escribo algo antes la variable espacio cambia a false (Se usa solo en domicilio)
+            static public int Numeros = new int();
+
+        #endregion
+
+        #region Inicio
 
         public Agregar_Cliente()
         {
             InitializeComponent();
         }
 
-
-        #region KeyPress
-
-        public void PermitirNumeros(object sender, KeyPressEventArgs e)
+        private void Agregar_Cliente_Load(object sender, EventArgs e)
         {
-            gen.PermitirNumeros(sender, e);
-        }
-
-        public void PermitirLetras(object sender, KeyPressEventArgs e)
-        {
-            gen.PermitirLetras(sender, e);
-        }
-
-        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
-        {
-            gen.NoPermitirEscribir(sender, e);
-        }
-
-        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto) 
-        {
-            gen.PermitirLetrasEspacio(sender, e, Texto);
-        }
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-             PermitirLetrasEspacio(sender, e, txtNombre.Text);
-        }
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-             PermitirLetrasEspacio(sender, e, txtApellido.Text);
+            this.Dock = DockStyle.Fill;
+            D = 0;
+            Numeros = 0;
         }
 
         #endregion
+
+        #region Eventos
         private string ConstruirMensaje()
         {
             string Mensaje = null;
@@ -107,13 +87,39 @@ namespace WindowsFormsApp1.Clientes
             }
             return Mensaje;
         }
-        private void Agregar_Cliente_Load(object sender, EventArgs e)
-        {
+        #endregion
 
-            this.Dock = DockStyle.Fill;
-            D = 0;
-            Numeros = 0;
+        #region KeyPress
+
+        public void PermitirNumeros(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirNumeros(sender, e);
         }
+
+        public void PermitirLetras(object sender, KeyPressEventArgs e)
+        {
+            gen.PermitirLetras(sender, e);
+        }
+
+        public void NoPermitirEscribir(object sender, KeyPressEventArgs e)
+        {
+            gen.NoPermitirEscribir(sender, e);
+        }
+
+        public void PermitirLetrasEspacio(object sender, KeyPressEventArgs e, string Texto) 
+        {
+            gen.PermitirLetrasEspacio(sender, e, Texto);
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             PermitirLetrasEspacio(sender, e, txtNombre.Text);
+        }
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             PermitirLetrasEspacio(sender, e, txtApellido.Text);
+        }
+
         private void txtDomicilio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (txtDomicilio.Text == "")
@@ -148,19 +154,19 @@ namespace WindowsFormsApp1.Clientes
                     {
                         e.Handled = true;
                     }
-                    if(Char.IsDigit(e.KeyChar) && espacio == true)
+                    if (Char.IsDigit(e.KeyChar) && espacio == true)
                     {
                         e.Handled = false;
                         Numeros++;
                         D = 4;
                         E = true;
                     }
-                    if(Char.IsLetter(e.KeyChar) && espacio == true && D<=2)
+                    if (Char.IsLetter(e.KeyChar) && espacio == true && D <= 2)
                     {
                         espacio = false;
                         D++;
                     }
-                    if(Char.IsLetter(e.KeyChar) && espacio == true && E == true)
+                    if (Char.IsLetter(e.KeyChar) && espacio == true && E == true)
                     {
                         e.Handled = true;
                     }
@@ -201,6 +207,11 @@ namespace WindowsFormsApp1.Clientes
                 }
             }
         }
+
+        #endregion
+
+        #region Botones
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string Mensaje;
@@ -221,10 +232,14 @@ namespace WindowsFormsApp1.Clientes
                 MessageBox.Show("Faltan Cargar: " + Mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             btnCancelar.Enabled = false;
             this.Close();
         }
+
+        #endregion
+
     }
 }

@@ -14,12 +14,28 @@ namespace WindowsFormsApp1.Tortas
     public partial class Eliminar_Torta : Form
     {
 
+        #region Declaraciones
+
         Genericas gen = new Genericas(); 
         N_Tortas nt = new N_Tortas();
+
+        #endregion
+
+        #region Inicio
+
         public Eliminar_Torta()
         {
             InitializeComponent();
         }
+
+        private void Eliminar_Torta_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = nt.getTabla();
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -50,14 +66,8 @@ namespace WindowsFormsApp1.Tortas
 
         #endregion
 
-
-        private void Eliminar_Torta_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = nt.getTabla();
-        }
-
+        #region Botones
+        
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtTorta.Text != "")
@@ -73,6 +83,8 @@ namespace WindowsFormsApp1.Tortas
                 btnAceptar.Enabled = false;
                 this.Close();
         }
+
+        #endregion
 
     }
 }

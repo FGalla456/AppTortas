@@ -13,17 +13,31 @@ namespace WindowsFormsApp1.Compras
 {
     public partial class Eliminar_Detalle : Form
     {
+        #region Declaraciones
 
         Genericas gen = new Genericas();
         N_Compras com = new N_Compras();
         N_DetalleCompra dc = new N_DetalleCompra();
+        static public string celda;
+        static public bool Detalle = new bool();
+
+        #endregion
+
+        #region Inicio
         public Eliminar_Detalle()
         {
             InitializeComponent();
         }
 
-        static public string celda;
-        static public bool Detalle = new bool();
+        private void Eliminar_Detalle_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = com.getTabla();
+            Detalle = false;
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -49,13 +63,7 @@ namespace WindowsFormsApp1.Compras
 
         #endregion
 
-        private void Eliminar_Detalle_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = com.getTabla();
-            Detalle = false;
-        }
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -72,6 +80,10 @@ namespace WindowsFormsApp1.Compras
                 btnAceptar.Enabled = false;
                 this.Close();
         }
+
+        #endregion
+        
+        #region Eventos
 
         private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -94,5 +106,8 @@ namespace WindowsFormsApp1.Compras
                 }
             }
         }
+
+        #endregion
+
     }
 }

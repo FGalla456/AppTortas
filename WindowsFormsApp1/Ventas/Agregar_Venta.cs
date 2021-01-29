@@ -14,58 +14,29 @@ namespace WindowsFormsApp1.Ventas
 {
     public partial class Agregar_Venta : Form
     {
+        #region Declaraciones
         Entidad.Ventas Ven = new Entidad.Ventas();
         N_Pedidos np = new N_Pedidos();
         N_Ventas nv = new N_Ventas();
         Genericas gen = new Genericas();
+        #endregion
+
+        #region Inicio
+
         public Agregar_Venta()
         {
             InitializeComponent();
         }
 
-        private string ConstruirMensaje()
+        private void Agregar_Venta_Load(object sender, EventArgs e)
         {
-           string Mensaje = null;
-            if (txtVenta.Text == "")
-            {
-                Mensaje = "Numero de Venta";
-            }
-            if (txtPed.Text == "")
-            {
-                if (Mensaje == "")
-                {
-                    Mensaje = "Numero de Pedido";
-                }
-                else
-                {
-                    Mensaje += ", Numero de Pedido";
-                }
-            }
-            if (txtCosto.Text == "")
-            {
-                if (Mensaje == "")
-                {
-                    Mensaje = "Costo de Elaboracion";
-                }
-                else
-                {
-                    Mensaje += ", Costo de Elaboracion";
-                } 
-            }
-            if (txtTotal.Text == "")
-            {
-                if (Mensaje == "")
-                {
-                    Mensaje = "Total de la Venta";
-                }
-                else
-                {
-                    Mensaje += ", Total de la Venta";
-                }
-
-            }
-            return Mensaje;
+            this.Dock = DockStyle.Fill;
+            txtPed.Enabled = false;
+            txtTotal.Enabled = false;
+            txtCosto.Enabled = false;
         }
+
+        #endregion
       
         #region KeyPress
 
@@ -96,13 +67,7 @@ namespace WindowsFormsApp1.Ventas
 
         #endregion
 
-        private void Agregar_Venta_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            txtPed.Enabled = false;
-            txtTotal.Enabled = false;
-            txtCosto.Enabled = false;
-        }
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -145,5 +110,56 @@ namespace WindowsFormsApp1.Ventas
             GrillaPed.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaPed.Visible = true;
         }
+
+        #endregion
+
+        #region Eventos
+
+        private string ConstruirMensaje()
+        {
+            string Mensaje = null;
+            if (txtVenta.Text == "")
+            {
+                Mensaje = "Numero de Venta";
+            }
+            if (txtPed.Text == "")
+            {
+                if (Mensaje == "")
+                {
+                    Mensaje = "Numero de Pedido";
+                }
+                else
+                {
+                    Mensaje += ", Numero de Pedido";
+                }
+            }
+            if (txtCosto.Text == "")
+            {
+                if (Mensaje == "")
+                {
+                    Mensaje = "Costo de Elaboracion";
+                }
+                else
+                {
+                    Mensaje += ", Costo de Elaboracion";
+                }
+            }
+            if (txtTotal.Text == "")
+            {
+                if (Mensaje == "")
+                {
+                    Mensaje = "Total de la Venta";
+                }
+                else
+                {
+                    Mensaje += ", Total de la Venta";
+                }
+
+            }
+            return Mensaje;
+        }
+
+        #endregion
+
     }
 }

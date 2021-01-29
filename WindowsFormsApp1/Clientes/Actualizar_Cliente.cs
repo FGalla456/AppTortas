@@ -13,12 +13,29 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class Actualizar_Cliente : Form
     {
+
+        #region Declaraciones
+
         Genericas gen = new Genericas();
         N_Clientes nc = new N_Clientes();
+
+        #endregion
+
+        #region Inicio
+
         public Actualizar_Cliente()
         {
             InitializeComponent();
         }
+
+        private void Actualizar_Cliente_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.DataSource = nc.getTabla();
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -38,12 +55,8 @@ namespace WindowsFormsApp1.Clientes
         }
 
         #endregion
-        private void Actualizar_Cliente_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.DataSource = nc.getTabla();
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
+
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -56,6 +69,8 @@ namespace WindowsFormsApp1.Clientes
             btnCancelar.Enabled = false;
             this.Close();
         }
+
+        #endregion
 
     }
 }

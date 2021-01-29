@@ -14,7 +14,14 @@ namespace WindowsFormsApp1.Mercaderia
     public partial class Ver_Mercaderia : Form
     {
 
+        #region Declaraciones
+
         N_Producto Pro = new N_Producto();
+
+        #endregion
+
+        #region Inicio
+
         public Ver_Mercaderia()
         {
             InitializeComponent();
@@ -27,10 +34,16 @@ namespace WindowsFormsApp1.Mercaderia
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        #endregion
+
+        #region Botones
+
         private void Refresh_Click(object sender, EventArgs e)
         {
             Grilla.DataSource = Pro.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        #endregion
     }
 }

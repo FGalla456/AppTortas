@@ -13,14 +13,30 @@ namespace WindowsFormsApp1.Compras
 {
     public partial class Eliminar_Compra : Form
     {
+        #region Declaraciones
+
         Genericas gen = new Genericas();
+        N_Compras nc = new N_Compras();
+        static public string celda;
+
+        #endregion
+
+        #region Inicio
+
         public Eliminar_Compra()
         {
             InitializeComponent();
         }
 
-        static public string celda;
+        private void Eliminar_Compra_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = nc.getTabla();
+        }
 
+        #endregion
+        
         #region KeyPress
 
         public void PermitirNumeros(object sender, KeyPressEventArgs e)
@@ -45,20 +61,13 @@ namespace WindowsFormsApp1.Compras
 
         #endregion
 
-        private void Eliminar_Compra_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            N_Compras Com = new N_Compras();
-            Grilla.DataSource = Com.getTabla();
-        }
-
+        #region Botones
+        
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (txtCompra.Text != "")
             {
-                N_Compras Com = new N_Compras();
-                Com.eliminarCompra(int.Parse(txtCompra.Text.ToString()));
+                nc.eliminarCompra(int.Parse(txtCompra.Text.ToString()));
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -70,6 +79,10 @@ namespace WindowsFormsApp1.Compras
                 this.Close();
         }
 
+        #endregion
+
+        #region Eventos
+
         private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = Grilla.CurrentRow;
@@ -77,5 +90,8 @@ namespace WindowsFormsApp1.Compras
             celda = Convert.ToString(row.Cells["Numero de Compra"].Value);
             txtCompra.Text = celda;
         }
+
+        #endregion
+
     }
 }

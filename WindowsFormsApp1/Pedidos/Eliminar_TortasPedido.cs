@@ -13,13 +13,27 @@ namespace WindowsFormsApp1.Pedidos
 {
     public partial class Eliminar_TortasPedido : Form
     {
+        #region Declaraciones
 
         Genericas gen = new Genericas();
         N_TortasPedido ntp = new N_TortasPedido();
+
+        #endregion
+
+        #region Inicio
         public Eliminar_TortasPedido()
         {
             InitializeComponent();
         }
+
+        private void Eliminar_TortasPedido_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = ntp.getTabla();
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -50,12 +64,7 @@ namespace WindowsFormsApp1.Pedidos
 
         #endregion
 
-        private void Eliminar_TortasPedido_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = ntp.getTabla();
-        }
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -72,5 +81,8 @@ namespace WindowsFormsApp1.Pedidos
             btnAceptar.Enabled = false;
             this.Close();
         }
+
+        #endregion
+
     }
 }

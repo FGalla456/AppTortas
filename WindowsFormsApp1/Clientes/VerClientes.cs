@@ -13,6 +13,14 @@ namespace WindowsFormsApp1.Clientes
 {
     public partial class VerClientes : Form
     {
+        #region Declaraciones
+
+            N_Clientes nc = new N_Clientes();
+
+        #endregion
+
+        #region Inicio
+
         public VerClientes()
         {
             InitializeComponent();
@@ -21,16 +29,22 @@ namespace WindowsFormsApp1.Clientes
         private void VerClientes_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Clientes Cli = new N_Clientes();
-            Grilla.DataSource = Cli.getTabla();
+            Grilla.DataSource = nc.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        #endregion
+
+        #region Botones
+
         private void Refresh_Click(object sender, EventArgs e)
         {
-            N_Clientes Cli = new N_Clientes();
-            Grilla.DataSource = Cli.getTabla();
+
+            Grilla.DataSource = nc.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        #endregion
+
     }
 }

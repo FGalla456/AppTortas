@@ -13,7 +13,15 @@ namespace WindowsFormsApp1.Pedidos
 {
     public partial class Ver_Pedidos : Form
     {
+        #region Declaraciones
+
+        N_Pedidos np = new N_Pedidos();
+        N_TortasPedido ntp = new N_TortasPedido();
         static public bool SubGrilla = new bool();
+
+        #endregion
+
+        #region Inicio
 
         public Ver_Pedidos()
         {
@@ -23,38 +31,27 @@ namespace WindowsFormsApp1.Pedidos
         private void Ver_Pedidos_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Pedidos Ped = new N_Pedidos();
-            Grilla.DataSource = Ped.getTabla();
+            Grilla.DataSource = np.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SubGrilla = false;
         }
+
+        #endregion
+
+        #region Botones
 
         private void Refresh_Click(object sender, EventArgs e)
         {
             if (SubGrilla == false)
             {
-                N_Pedidos Ped = new N_Pedidos();
-                Grilla.DataSource = Ped.getTabla();
+                Grilla.DataSource = np.getTabla();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {
-                N_TortasPedido TP = new N_TortasPedido();
-                Grilla.DataSource = TP.getTabla();
+                Grilla.DataSource = ntp.getTabla();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-        }
-
-        private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Atras.Visible = true;
-            SubGrilla = true;
-            label1.Visible = false;
-            Entregados.Visible = false;
-            N_TortasPedido TP = new N_TortasPedido();
-            Grilla.DataSource = TP.getTabla();
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
         }
 
         private void Atras_Click(object sender, EventArgs e)
@@ -63,24 +60,40 @@ namespace WindowsFormsApp1.Pedidos
             SubGrilla = false;
             label1.Visible = true;
             Entregados.Visible = true;
-            N_Pedidos Ped = new N_Pedidos();
-            Grilla.DataSource = Ped.getTabla();
+            Grilla.DataSource = np.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        #endregion
+
+        #region Eventos
+
+        private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Atras.Visible = true;
+            SubGrilla = true;
+            label1.Visible = false;
+            Entregados.Visible = false;
+            Grilla.DataSource = ntp.getTabla();
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
         }
 
         private void Entregados_CheckedChanged(object sender, EventArgs e)
         {
-            N_Pedidos Ped = new N_Pedidos();
             if (Entregados.Checked == true)
             {
-                Grilla.DataSource = Ped.getTablaEntregados();
+                Grilla.DataSource = np.getTablaEntregados();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             else
             {   
-                Grilla.DataSource = Ped.getTabla();
+                Grilla.DataSource = np.getTabla();
                 Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
         }
+
+        #endregion
+
     }
 }

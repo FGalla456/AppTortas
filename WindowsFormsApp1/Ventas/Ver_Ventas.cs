@@ -13,6 +13,15 @@ namespace WindowsFormsApp1.Ventas
 {
     public partial class Ver_Ventas : Form
     {
+
+        #region Declaraciones
+
+        N_Ventas nv = new N_Ventas();
+
+        #endregion
+
+        #region Inicio
+
         public Ver_Ventas()
         {
             InitializeComponent();
@@ -21,16 +30,21 @@ namespace WindowsFormsApp1.Ventas
         private void Ver_Ventas_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            N_Ventas Ven = new N_Ventas();
-            Grilla.DataSource = Ven.getTabla();
+            Grilla.DataSource = nv.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        #endregion
+
+        #region Botones
+
         private void Refresh_Click(object sender, EventArgs e)
         {
-            N_Ventas Ven = new N_Ventas();
-            Grilla.DataSource = Ven.getTabla();
+            Grilla.DataSource = nv.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+        #endregion
+
     }
 }

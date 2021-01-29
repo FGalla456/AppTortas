@@ -13,7 +13,15 @@ namespace WindowsFormsApp1
 {
 	public partial class Principal : Form
 	{
-		public Principal()
+
+        #region Declaraciones
+
+        private bool EsColapzado;
+
+		#endregion
+
+        #region Inicio
+        public Principal()
 		{
 			InitializeComponent();
             //ColapzarClientes.Start();
@@ -57,7 +65,7 @@ namespace WindowsFormsApp1
 			btnVentas.Iconimage_right = Resources.icons8_más_de_50_2;
 		}
 
-		private bool EsColapzado;
+        #endregion
 
         private void AbrirHijo<Forms>() where Forms : Form, new()
         {
@@ -94,8 +102,8 @@ namespace WindowsFormsApp1
 
             }
         }
-
-        //private void AbrirHijo(object FormHijo)
+        
+		//private void AbrirHijo(object FormHijo)
         //{
         //	if (this.Contenedor.Controls.Count > 0)
         //		this.Contenedor.Controls.RemoveAt(0);
@@ -158,7 +166,7 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        ///Inicio de los Clicks del panel Menu
+        #region Botones del Panel Menu
 
         private void btnCompras_Click(object sender, EventArgs e)
 		{
@@ -190,12 +198,11 @@ namespace WindowsFormsApp1
 			ColapzarVentas.Start();
 		}
 
-		///Fin de los Clicks del panel Menu
+        #endregion
 
+        #region Timers del panel Menu
 
-		///Inicio de los Timers del panel Menu
-
-		private void ColapzarCompras_Tick_1(object sender, EventArgs e)
+        private void ColapzarCompras_Tick_1(object sender, EventArgs e)
 		{
 			if (EsColapzado)
 			{
@@ -396,8 +403,7 @@ namespace WindowsFormsApp1
 			}
 		}
 
-        ///Fin de los Timers del panel Menu
-
+        #endregion
 
         #region Click del Panel Compras
 
@@ -438,7 +444,7 @@ namespace WindowsFormsApp1
 
         #endregion
 
-        ///Inicio de los Click en el Panel de Clientes
+		#region Click en el Panel de Clientes
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
@@ -460,11 +466,11 @@ namespace WindowsFormsApp1
             AbrirHijo<Clientes.Actualizar_Cliente>();
         }
 
-        ///Fin de los Click en el Panel de Clientes
+		#endregion
 
-        ///Inicio de los Clicks en el Panel de Pedidos
+		#region Clicks en el Panel de Pedidos
 
-        private void btnAgregarPedido_Click(object sender, EventArgs e)
+		private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
             //AbrirHijo<Agregar_TortasPedido>();
             AbrirHijo<Pedidos.Agregar_Pedido>();
@@ -501,15 +507,14 @@ namespace WindowsFormsApp1
             }
         }
 
-
         private void btnActulizarPedido_Click(object sender, EventArgs e)
         {
 
         }
 
-        ///Fin de los Click en el Panel de Pedidos
+        #endregion
 
-        ///Inicio de los Clicks en el Panel de Productos
+        #region Clicks en el Panel de Productos
 
         private void btnAgregarProd_Click(object sender, EventArgs e)
         {
@@ -531,9 +536,9 @@ namespace WindowsFormsApp1
 
         }
 
-        ///Fin de los Click en el Panel de Productos
+        #endregion
 
-        ///Inicio de los Clicks en el Panel de Tortas
+		#region Clicks en el Panel de Tortas
 
         private void btnAgregarTorta_Click(object sender, EventArgs e)
         {
@@ -575,9 +580,9 @@ namespace WindowsFormsApp1
 
         }
 
-        ///Fin de los Click en el Panel de Tortas
+        #endregion
 
-        ///Inicio de los Clicks en el Panel de Ventas
+        #region Clicks en el Panel de Ventas
 
         private void btnAgregarVenta_Click(object sender, EventArgs e)
         {
@@ -599,7 +604,7 @@ namespace WindowsFormsApp1
 
         }
 
-        ///Fin de los Click en el Panel de Ventas
+        #endregion
 
     }
 }

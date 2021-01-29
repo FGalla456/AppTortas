@@ -13,12 +13,29 @@ namespace WindowsFormsApp1.Mercaderia
 {
     public partial class Eliminar_Mercaderia : Form
     {
+
+        #region Declaraciones
+
         N_Producto Pro = new N_Producto();
         Genericas gen = new Genericas();
+
+        #endregion
+
+        #region Inicio
+
         public Eliminar_Mercaderia()
         {
             InitializeComponent();
         }
+
+        private void Eliminar_Mercaderia_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.DataSource = Pro.getTabla();
+        }
+
+        #endregion
 
         #region KeyPress
 
@@ -49,12 +66,7 @@ namespace WindowsFormsApp1.Mercaderia
 
         #endregion
 
-        private void Eliminar_Mercaderia_Load(object sender, EventArgs e)
-        {
-            this.Dock = DockStyle.Fill;
-            Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grilla.DataSource = Pro.getTabla();
-        }
+        #region Botones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -71,5 +83,7 @@ namespace WindowsFormsApp1.Mercaderia
                 btnAceptar.Enabled = false;
                 this.Close();
         }
+
+        #endregion 
     }
 }
