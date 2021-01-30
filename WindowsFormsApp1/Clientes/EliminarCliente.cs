@@ -16,7 +16,7 @@ namespace WindowsFormsApp1.Clientes
     {
         #region Declaraciones
 
-            public string celda;
+            DataGridViewRow row = new DataGridViewRow();
             Genericas gen = new Genericas();
             N_Clientes nc = new N_Clientes();
 
@@ -34,6 +34,7 @@ namespace WindowsFormsApp1.Clientes
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Grilla.DataSource = nc.getTabla();
+            Grilla.Columns[0].Visible = false;
         }
 
         #endregion
@@ -69,6 +70,8 @@ namespace WindowsFormsApp1.Clientes
         {
             if (txtCliente.Text != "")
             {
+                row = Grilla.CurrentRow;
+                nc.eliminarCliente(Convert.ToInt32(row.Cells[0].Value));
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -80,9 +83,8 @@ namespace WindowsFormsApp1.Clientes
 
         private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = Grilla.CurrentRow;
-            celda = Convert.ToString(row.Cells["Id Cliente"].Value);
-            txtCliente.Text = celda;
+            row = Grilla.CurrentRow;
+            txtCliente.Text = Convert.ToString(row.Cells["Nombre"].Value) + " " + Convert.ToString(row.Cells["Apellido"].Value);
         }
 
         #endregion

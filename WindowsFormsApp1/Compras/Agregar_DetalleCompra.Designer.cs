@@ -121,6 +121,7 @@
             this.NroCompra.Name = "NroCompra";
             this.NroCompra.Size = new System.Drawing.Size(237, 20);
             this.NroCompra.TabIndex = 8;
+            this.NroCompra.Text = "1";
             this.NroCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NroCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoPermitirEscribir);
             // 

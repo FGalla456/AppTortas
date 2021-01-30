@@ -31,6 +31,7 @@ namespace WindowsFormsApp1.Clientes
             this.Dock = DockStyle.Fill;
             Grilla.DataSource = nc.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.Columns[0].Visible = false;
         }
 
         #endregion

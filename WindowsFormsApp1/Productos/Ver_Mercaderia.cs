@@ -32,6 +32,7 @@ namespace WindowsFormsApp1.Mercaderia
             this.Dock = DockStyle.Fill;
             Grilla.DataSource = Pro.getTabla();
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            Grilla.Columns[0].Visible = false;
         }
 
         #endregion

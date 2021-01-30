@@ -16,6 +16,7 @@ namespace WindowsFormsApp1.Mercaderia
 
         #region Declaraciones
 
+        DataGridViewRow row = new DataGridViewRow();
         N_Producto Pro = new N_Producto();
         Genericas gen = new Genericas();
 
@@ -33,6 +34,7 @@ namespace WindowsFormsApp1.Mercaderia
             this.Dock = DockStyle.Fill;
             Grilla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Grilla.DataSource = Pro.getTabla();
+            Grilla.Columns[0].Visible = false;
         }
 
         #endregion
@@ -72,7 +74,8 @@ namespace WindowsFormsApp1.Mercaderia
         {
             if (txtMercaderia.Text != "")
             {
-                Pro.eliminarProducto(int.Parse(txtMercaderia.Text.ToString()));
+                row = Grilla.CurrentRow;
+                Pro.eliminarProducto(Convert.ToInt32(row.Cells[0].Value));
                 btnAceptar.Enabled = false;
                 this.Close();
             }
@@ -84,6 +87,17 @@ namespace WindowsFormsApp1.Mercaderia
                 this.Close();
         }
 
-        #endregion 
+        #endregion
+
+        #region Eventos
+
+        private void Grilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            row = Grilla.CurrentRow;
+            txtMercaderia.Text = Convert.ToString(row.Cells[1].Value);
+        }
+
+        #endregion
+
     }
 }

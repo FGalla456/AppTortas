@@ -48,6 +48,7 @@
             this.Grilla.Name = "Grilla";
             this.Grilla.Size = new System.Drawing.Size(1094, 460);
             this.Grilla.TabIndex = 49;
+            this.Grilla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grilla_CellDoubleClick);
             // 
             // label1
             // 

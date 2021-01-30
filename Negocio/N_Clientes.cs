@@ -24,7 +24,6 @@ namespace Negocio
 
         public void eliminarCliente(int codigo)
         {
-
             Cli.EliminarCliente(codigo);
         }
 

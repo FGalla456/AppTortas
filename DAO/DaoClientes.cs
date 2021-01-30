@@ -16,7 +16,7 @@ namespace DAO
         public DataTable getTablaClientes()
         {
             List<Clientes> lista = new List<Clientes>();
-            DataTable tabla = ds.ObtenerTabla("Clientes", "select Nombre, Apellido, Telefono, Domicilio from Cliente where Estado = 1");
+            DataTable tabla = ds.ObtenerTabla("Clientes", "select idCliente as 'Id Cliente', Nombre, Apellido, Telefono, Domicilio from Cliente where Estado = 1");
             return tabla;
         }
 

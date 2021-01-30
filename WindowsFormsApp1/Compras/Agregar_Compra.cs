@@ -28,10 +28,17 @@ namespace WindowsFormsApp1
         public Agregar_Compra()
 		{
 			InitializeComponent();
-		}
+         //   AbrirHijo<Compras.Agregar_DetalleCompra>();
+        }
+
+        public void x(DataTable List) 
+        {
+            lista = List;
+        }
 
         private void Agregar_Compra_Load(object sender, EventArgs e)
         {
+            
             Total = 0;
             float Cantidad = 0;
             float Precio = 0;
@@ -87,7 +94,7 @@ namespace WindowsFormsApp1
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-    //        AbrirHijo<Compras.Agregar_DetalleCompra>();
+            
 
               string Mensaje;
             /*    if (txtTotal.Text != "" && dtpFecha.Text != "")
@@ -119,13 +126,13 @@ namespace WindowsFormsApp1
 
         private void AbrirHijo<Forms>() where Forms : Form, new()
         {
-            Form formulario;
-            formulario = Controls.OfType<Forms>().FirstOrDefault();
+            Compras.Agregar_DetalleCompra formulario;
+          //  formulario = Controls.OfType<Forms>().FirstOrDefault();
 
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
-            if (formulario == null)
-            {
-                formulario = new Forms();
+            //if (formulario == null)
+           // {
+                formulario = new Compras.Agregar_DetalleCompra();
                 formulario.TopLevel = false;
                 //   formulario.Dock = DockStyle.Fill;
                 formulario.Anchor = AnchorStyles.Bottom;
@@ -134,23 +141,25 @@ namespace WindowsFormsApp1
                 formulario.Anchor = AnchorStyles.Top;
                 Controls.Add(formulario);
                 Tag = formulario;
-                formulario.Close();
-
-                // formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
-            }
-            else
-            {
-
-                //Si el Formulario/instancia existe, lo traemos a frente
+                formulario.Show();
                 formulario.BringToFront();
-                formulario.Close();
-                //Si la instancia esta minimizada mostramos
-                if (formulario.WindowState == FormWindowState.Minimized)
-                {
-                    formulario.WindowState = FormWindowState.Normal;
-                }
+                lista = formulario.lista;
 
-            }
+            // formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
+            /*  }
+              else
+              {
+
+                  //Si el Formulario/instancia existe, lo traemos a frente
+                  formulario.BringToFront();
+                  formulario.Close();
+                  //Si la instancia esta minimizada mostramos
+                  if (formulario.WindowState == FormWindowState.Minimized)
+                  {
+                      formulario.WindowState = FormWindowState.Normal;
+                  }
+
+              }*/
         }
 
         private string ConstruirMensaje()

@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Compras
 
         #region Declaraciones
 
-        static public DataTable lista = new DataTable();
+        public DataTable lista = new DataTable();
         static public bool var = new bool();
         static public bool Coma = new bool();
         static public bool Punto = new bool();
@@ -118,18 +118,19 @@ namespace WindowsFormsApp1.Compras
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             N_DetalleCompra DC = new N_DetalleCompra();
-          //  CerrarForm.Start();
-            AbrirHijo<Agregar_Compra>(lista);
+            //  CerrarForm.Start();
+            AbrirHijo<Agregar_Compra>();
             /*while (HijoAbierto<Agregar_Compra>() == true)
              {
                  //DC.datosDC(lista);
              }
             */
-          /*  AC.MdiParent = this.MdiParent;
-            AC.Show();
-            MessageBox.Show("xd");
-            */
-           // btnAceptar.Enabled = false;
+            /*  AC.MdiParent = this.MdiParent;
+              AC.Show();
+              MessageBox.Show("xd");
+              */
+            // btnAceptar.Enabled = false;
+            //  this.Close();
           //  this.Close();
         }
 
@@ -225,41 +226,43 @@ namespace WindowsFormsApp1.Compras
             return Mensaje;
         }
 
-        private void AbrirHijo<Forms>(DataTable Lis) where Forms : Form, new()
+        private void AbrirHijo<Forms>() where Forms : Form, new()
         {
-            Agregar_Compra formulario;
-            formulario = Controls.OfType<Agregar_Compra>().FirstOrDefault();
+            Agregar_Compra formulario = new Agregar_Compra();
+            // formulario = Controls.OfType<Agregar_Compra>().FirstOrDefault();
 
             //si el formulario/instancia no existe, creamos nueva instancia y mostramos
-            if (formulario == null)
-            {
-                formulario = new Agregar_Compra();
-                formulario.TopLevel = false;
-                //   formulario.Dock = DockStyle.Fill;
-                formulario.Anchor = AnchorStyles.Bottom;
-                formulario.Anchor = AnchorStyles.Left;
-                formulario.Anchor = AnchorStyles.Right;
-                formulario.Anchor = AnchorStyles.Top;
-                Controls.Add(formulario);
-                Tag = formulario;
-                formulario.lista = Lis;
-                formulario.Show();
-                formulario.BringToFront();
-                // formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
-            }
-            else
-            {
+            //   if (formulario == null)
+            // {
+           // formulario = new Agregar_Compra();
+            formulario.TopLevel = false;
+            //   formulario.Dock = DockStyle.Fill;
+            formulario.Anchor = AnchorStyles.Bottom;
+            formulario.Anchor = AnchorStyles.Left;
+            formulario.Anchor = AnchorStyles.Right;
+            formulario.Anchor = AnchorStyles.Top;
+            Controls.Add(formulario);
+            Tag = formulario;
+            formulario.lista = lista;
+            formulario.x(lista);
+            formulario.Show();
+            formulario.BringToFront();
 
-                //Si el Formulario/instancia existe, lo traemos a frente
-                formulario.BringToFront();
+            // formulario.FormClosed += new FormClosedEventHandler(CloseForms);               
+            /*   }
+               else
+               {
 
-                //Si la instancia esta minimizada mostramos
-                if (formulario.WindowState == FormWindowState.Minimized)
-                {
-                    formulario.WindowState = FormWindowState.Normal;
-                }
+                   //Si el Formulario/instancia existe, lo traemos a frente
+                   formulario.BringToFront();
 
-            }
+                   //Si la instancia esta minimizada mostramos
+                   if (formulario.WindowState == FormWindowState.Minimized)
+                   {
+                       formulario.WindowState = FormWindowState.Normal;
+                   }
+
+               }*/
         }
 
         private bool HijoAbierto<Forms>() where Forms : Form, new()
@@ -287,8 +290,8 @@ namespace WindowsFormsApp1.Compras
             Celda = Convert.ToString(row.Cells["Id Producto"].Value);
             txtIdProd.Text = Celda;
             GrillaProd.Visible = false;
-            Unidad = NP.Unidad(int.Parse(txtIdProd.Text.ToString()));
-            if(Unidad == "Unidad")
+            //Unidad = NP.Unidad(int.Parse(txtIdProd.Text.ToString()));
+         /*   if(Unidad == "Unidad")
             {
                 nudCant.DecimalPlaces = 0;
                 nudCant.Increment = 1;
@@ -297,7 +300,7 @@ namespace WindowsFormsApp1.Compras
             {
                 nudCant.DecimalPlaces = 1;
                 nudCant.Increment = 0.1m;
-            }
+            }*/
         }
 
         private void CerrarForm_Tick(object sender, EventArgs e)
